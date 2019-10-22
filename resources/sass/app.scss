@@ -1,0 +1,54 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.home {
+  margin-top: 100px;
+  $home-height: 350px;
+  padding: 60px;
+  background: $gray;
+  height: $home-height;
+  position: relative;
+
+  .btn {
+    height: 50px;
+    line-height: 15px;
+    border-radius: 0;
+    color: black;
+    background: white;
+    margin-top: 30px;
+    display: inline-flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  .btn.inverse {
+    color: white;
+    background: $main;
+  }
+
+  .dekor1 {
+    position: absolute;
+    top: 0px;
+    right: -50px;
+    background: $main;
+    width: $home-height;
+    height: $home-height;
+    transform: rotate(60deg);
+
+  }
+
+  .dekor2 {
+
+    position: absolute;
+    bottom: -39px;
+    left: -40px;
+    width: $home-height/5;
+    height: $home-height/5;
+    transform: rotate(40deg);
+    background: $main;
+  }
+}

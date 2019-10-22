@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<products>
+    <product>
+        <article>ztp12345</article>
+        <old-article>zeta12213</old-article>
+        <name>Соединительная муфта 3СТП-10 ЗЭЭТАТехПро</name>
+        <description>Супер пупер муфта для соединения</description>
+    </product>
+    <product>
+        <article>ztp12333</article>
+        <old-article>zeta12213</old-article>
+        <name>Соединительная муфта 3КНТП-10 ЗЭЭТАТехПро</name>
+        <description>Супер пупер муфта для оконцевания</description>
+    </product>
+</products>
