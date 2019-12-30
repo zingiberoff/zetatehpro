@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.1.0 on 2019-10-14 07:52:33.
+ * Generated for Laravel 6.1.0 on 2019-12-12 05:23:07.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -11,10 +11,10 @@
  * @see https://github.com/barryvdh/laravel-ide-helper
  */
 
-namespace Illuminate\Support\Facades {
+namespace Illuminate\Support\Facades { 
 
     /**
-     *
+     * 
      *
      * @see \Illuminate\Contracts\Foundation\Application
      */
@@ -14826,9 +14826,9 @@ namespace Barryvdh\Debugbar {
          * Adds a data collector
          *
          * @param \Barryvdh\Debugbar\DataCollectorInterface $collector
+         * @throws DebugBarException
          * @return \Barryvdh\Debugbar\LaravelDebugbar
          * @static
-         * @throws DebugBarException
          */
         public static function addCollector($collector)
         {

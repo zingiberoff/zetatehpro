@@ -14,10 +14,15 @@
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Auth::routes();
-
+Route::get('api/token/update', 'Auth\ApiTokenController@update')->middleware('role:administrator');
+Route::get('api/token/get', 'Auth\ApiTokenController@getToken')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/unconfirmed', 'GuestController@unconfirmed')->name('home');
 Route::get('/test', 'HomeController@test')->name('home');
 Route::resource('projects', 'ProjectController')->name('index', 'projects');
 Route::get('/unconfirmed_users', 'UserController@unconfirm')->name('unconfirmed_users');
 Route::get('/confirm_user/{id?}', 'UserController@confirm')->name('confirm_user');
+
+
+Route::get('/catalog', 'CatalogControler@index');
+Route::get('/search', 'CatalogControler@search');

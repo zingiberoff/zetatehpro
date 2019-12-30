@@ -9,7 +9,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth', 'confirm', 'permission:edit-post']);
+        $this->middleware(['auth', 'confirm', 'permission:confirm-users']);
 
     }
 
@@ -18,6 +18,7 @@ class UserController extends Controller
      */
     public function unconfirm()
     {
+        \Auth::user()->hasPermission('confirm-users');
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'unconfirm_user');
         })->get();

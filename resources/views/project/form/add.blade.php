@@ -6,7 +6,14 @@
                 <div class="card">
                     <div class="card-header">Создать проект</div>
 
-                    <form action="{{route('projects.create')}}"></form>
+                    <form action="{{route('projects.store')}}"
+                          method="post"
+                          class="p-4"
+                          enctype="multipart/form-data">
+                        @csrf
+                        @include('project.form.edit')
+
+                    </form>
                 </div>
             </div>
         </div>

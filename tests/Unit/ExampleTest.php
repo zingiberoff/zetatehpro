@@ -2,7 +2,9 @@
 
 namespace Tests\Unit;
 
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -12,8 +14,15 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testServerCreation()
     {
-        $this->assertTrue(true);
+        Passport::actingAs(
+            factory(User::class)->create(),
+            ['projects']
+        );
+
+        $response = $this->post('/api/projects');
+
+        $response->assertStatus(200);
     }
 }

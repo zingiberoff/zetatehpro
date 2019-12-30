@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Project;
+use App\ProjectFile;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 class ProjectController extends Controller
 {
@@ -18,31 +21,48 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
         //
-        $data['dump'] = '123';
+
 
         if (Auth::user()->hasRole('moderator')) {
             $data['projects'] = Project::all()->forPage(1, 20);
+            $data['moderate'] = true;
         } else {
             $data['projects'] = Auth::user()->projects()->get();
+
         }
-        dump($data['projects']);
+        $data['totalScore'] = Auth::user()->totalScore;
+
         return view('project.list', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
-        $data = [];
+
+        $data = [
+            'project' => [
+                'name' => $request->old('project.name'),
+                'description' => $request->old('project.description'),
+                'date_release' => $request->old('project.date_release')
+            ],
+            'customer' => [
+                'inn' => $request->old('customer.inn'),
+                'name' => $request->old('customer.name'),
+                'contact_person' => $request->old('customer.contact_person'),
+                'city' => $request->old('customer.city'),
+            ],
+            'files' => [],
+        ];
         return view('project.form.add', $data);
 
     }
@@ -50,20 +70,44 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
-        //
-        $cusomer = Customer::firstOrCreate(['inn' => '123456789'], ['name' => 'Customer Name', 'city' => 'City', 'contact_person' => 'FIO']);
+        try {
+            $this->validate($request, [
+                'project.name' => 'required',
+                'project.description' => 'required',
+                'project.date_release' => 'required',
+                'customer.inn' => 'required|max:13',
+                'customer.city' => 'required',
+                'customer.contact_person' => 'required',
+            ]);
+        } catch (ValidationException $e) {
+            return redirect('projects/create')->withInput();
+        }
 
-        $project = Auth::user()->projects()->create([
-            'name' => 'Name of project',
-            'description' => 'Project descipions text',
-            'date_release' => '2019-12-12',
-            'customer_id' => $cusomer->id,
-        ]);
+        $customer = Customer::firstOrCreate(['inn' => $request->input('customer')['inn']], $request->input('customer'));
+        $project = Auth::user()->projects()->create(
+            array_merge(
+                $request->input('project'),
+                ['customer_id' => $customer->id,]
+            )
+        );
+
+        $filesCollection = [];
+        if ($request->hasFile('files')) {
+            $uploadFiles = $request->allFiles()['files'];
+            /** @var \Illuminate\Http\UploadedFile $uploadFile */
+            foreach ($uploadFiles as $uploadFile) {
+                $projectFile = new ProjectFile(['project_id' => $project->id], $uploadFile);
+                $filesCollection[] = $projectFile;
+                $projectFile->save();
+            }
+
+        }
+        return redirect('projects');
 
     }
 
@@ -71,22 +115,39 @@ class ProjectController extends Controller
      * Display the specified resource.
      *
      * @param \App\Project $project
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show(Project $project)
+    public
+    function show(Project $project)
     {
         //
+
+        foreach ($project->products as $product) {
+            $product->sum = 0;
+            if ($project->confirm) {
+                $product->sum += $product->pivot->count * $product->cost_include;
+            }
+            if ($project->realise) {
+                $product->sum += $product->pivot->count * $product->cost_realise;
+            }
+        }
+        $project->customer;
+        return view('project.detail', $project);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param \App\Project $project
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function edit(Project $project)
+    public
+    function edit(Project $project)
     {
-        //
+
+        $data['project'] = $project;
+
+        return view('project.form.add', $data);
     }
 
     /**
@@ -94,9 +155,10 @@ class ProjectController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Project $project
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function update(Request $request, Project $project)
+    public
+    function update(Request $request, Project $project)
     {
         //
     }
@@ -105,9 +167,10 @@ class ProjectController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Project $project
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function destroy(Project $project)
+    public
+    function destroy(Project $project)
     {
         //
     }
