@@ -1,6 +1,6 @@
 <?php
 
-use App\Product;
+use App\Catalog\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;

@@ -2,6 +2,7 @@
 
 namespace App\Catalog;
 
+use App\RaecClient as RaecClient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
