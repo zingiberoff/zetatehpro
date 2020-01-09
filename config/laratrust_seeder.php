@@ -23,6 +23,7 @@ return [
         ],
     ],
     'permissions_map' => [
+        'confirm' => 'confirm',
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
