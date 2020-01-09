@@ -25,7 +25,7 @@ class CreatePropertiesTable extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('property_id')->unsigned();
             $table->bigInteger('value_id')->unsigned();
-            $table->string('value')->unsigned();
+            $table->string('value');
             $table->unique(['product_id', 'property_id', 'value_id']);
         });
         Schema::create('property_values', function (Blueprint $table) {
