@@ -26,7 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dump(Auth::user()->hasRole('administrator'));
         return view('home');
     }
 
