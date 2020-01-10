@@ -2,10 +2,12 @@
 
 @section('content')
     <header>
-
+        <div class="logo">ЗЭТАТехПро</div>
+        <a href="tel:88002012342 " class="phone">8 800 201-23-42 <span
+                    class="phone-title">Звонки для регионов бесплатно</span></a>
     </header>
     <main>
-        <div class="logo">ЗЭТАТехПро</div>
+
         <div class="home">
             <h1>Проектные решения</h1>
             <div class="links">

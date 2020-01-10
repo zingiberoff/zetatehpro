@@ -7,23 +7,55 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~font-awesome/scss/font-awesome.scss";
 
+a:hover {
+  text-decoration: none;
+}
 body {
   font-family: "Roboto", sans-serif;
 }
 
-.logo {
-  font-size: 50px;
-  margin-top: 30px;
-  margin-left: 50px;
+header {
+  display: flex;
+  margin: 20px 200px;
+  justify-content: space-between;
+
+  .logo {
+    font-size: 50px;
+    margin-left: 50px;
+    text-shadow: $text-shadow;
+    color: gray;
+    align-self: start;
+  }
+
+  a.phone {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 30px;
+    align-self: flex-end;
+
+    .phone-title {
+      color: gray;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 15px;
+    }
+  }
 }
+
 .home {
-  margin-top: 100px;
+  margin-top: 30px;
   $home-height: 350px;
   padding: 60px;
   background: url("/storage/bg.png") gray 100%;
   height: $home-height;
   position: relative;
   background-size: cover;
+
+  h1 {
+    text-shadow: $text-shadow;
+  }
 
   .btn {
     font-style: normal;
@@ -38,7 +70,7 @@ body {
     display: inline-flex;
     align-items: center;
     margin-right: 5px;
-    box-shadow: 4px 6px 4px 1px #00000030;
+    box-shadow: $shadow;
     text-align: left;
 
     img {
@@ -61,8 +93,8 @@ body {
     height: $home-height;
     transform: rotate(60deg);
     background: url("/storage/grid.svg") $main 20% 30%;
-
-
+    justify-content: center;
+    align-items: center;
     img {
       transform: rotate(-60deg);
 

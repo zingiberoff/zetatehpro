@@ -13,7 +13,7 @@
 
                             <div class="form-group row">
                                 <label for="email"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -30,7 +30,7 @@
 
                             <div class="form-group row">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Пароль') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -52,7 +52,7 @@
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Запомнить меня') }}
                                         </label>
                                     </div>
                                 </div>
@@ -61,17 +61,17 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
+                                        {{ __('Войти') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('Забыли пароль?') }}
                                         </a>
                                     @endif
                                     @if (Route::has('register'))
                                         <a class="btn btn-link" href="{{ route('register') }}">
-                                            {{ __('Register') }}
+                                            {{ __('Регистрация') }}
                                         </a>
                                     @endif
                                 </div>

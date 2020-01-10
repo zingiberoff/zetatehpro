@@ -2,10 +2,11 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Roboto', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-
+$shadow: 4px 6px 4px 1px #00000030;
+$text-shadow: 4px 3px 3px #00000030;
 // Colors
 $main: #222db4;
 $blue: #3490dc;
@@ -17,5 +18,5 @@ $orange: #f6993f;
 $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
-$cyan: #6cb2eb;
+$cyan: #222db4;
 $gray: #888b89;
