@@ -70,6 +70,11 @@ class Project extends Model
         return $this->belongsTo(Customer::class);
     }
 
+    public function status()
+    {
+        $this->hasOne(ProjectStatus::class);
+    }
+
     public function files()
     {
         return $this->hasMany(ProjectFile::class);
