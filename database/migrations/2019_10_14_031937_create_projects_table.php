@@ -26,12 +26,10 @@ class CreateProjectsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-        echo 1;
         Schema::table('projects', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
-        echo 1;
         Schema::create('product_project', function (Blueprint $table) {
             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('project_id')->unsigned();

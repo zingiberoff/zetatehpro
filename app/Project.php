@@ -74,10 +74,13 @@ class Project extends Model
     {
         $this->hasOne(ProjectStatus::class);
     }
+    public function payments(){
+        $this->belongsTo(Payment::class);
+    }
 
     public function files()
     {
-        return $this->hasMany(ProjectFile::class);
+        return $this->hasMany(ProjectFi-le::class);
     }
 
     public function getSumIncludeAttribute()
