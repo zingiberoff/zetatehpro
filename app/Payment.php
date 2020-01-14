@@ -11,4 +11,9 @@ class Payment extends Model
     public function project(){
         return $this->hasOne(Project::class);
     }
+
+    public function setPaymentTypeAttribute($value)
+    {
+        if (!in_array($value, ['confirm', 'realised', 'all'])) ;
+    }
 }

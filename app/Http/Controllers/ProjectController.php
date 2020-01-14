@@ -49,6 +49,7 @@ class ProjectController extends Controller
     {
         //
 
+
         $data = [
             'project' => [
                 'name' => $request->old('project.name'),
@@ -75,6 +76,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request->input());
         try {
             $this->validate($request, [
                 'project.name' => 'required',
