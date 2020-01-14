@@ -32,7 +32,7 @@
                         </div>
                     </article>
                 @empty
-                    <p>No articles found</p>
+                    <p>Ничего не найдено</p>
                 @endforelse
             </div>
         </div>

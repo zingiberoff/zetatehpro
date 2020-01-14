@@ -18,8 +18,8 @@
 </head>
 <body>
 <div id="app">
-    <header></header>
 
+    @include('layouts.header')
     @yield('content')
 
 </div>

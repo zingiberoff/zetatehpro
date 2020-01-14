@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use App\Role;
-use Illuminate\Support\Facades\Auth;
-
 class GuestController extends Controller
 {
     /**

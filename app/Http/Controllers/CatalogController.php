@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Catalog\EloquentProductRepository;
 use App\Catalog\Product;
+use App\User;
 use Illuminate\Http\Request;
 
-class CatalogControler extends Controller
+class CatalogController extends Controller
 {
     //
     public function index()
     {
-        $products = Product::with('properties')->paginate(10);
+        $products = Product::with('properties')->paginate(24);
 
         return view('catalog.index', ['products' => $products]);
     }   //
@@ -22,4 +23,5 @@ class CatalogControler extends Controller
 
         return view('catalog.search', ['products' => $products]);
     }
+
 }

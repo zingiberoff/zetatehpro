@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Catalog\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -65,7 +65,7 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Product $product
+     * @param \App\Catalog\Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -82,5 +82,14 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function changeCost(Request $request, Product $product)
+    {
+        // $product = Product::find($id);
+        $product->cost_include = $request->cost_include;
+        $product->cost_realise = $request->cost_realise;
+        $product->save();
+        return redirect('catalog');
     }
 }
