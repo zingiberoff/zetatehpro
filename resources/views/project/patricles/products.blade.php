@@ -1,4 +1,7 @@
 <div class="tab-pane fade" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab">
+
+    <add-products></add-products>
+    <products-list></products-list>
     <table class="table">
         <thead>
         <tr>

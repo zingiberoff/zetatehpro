@@ -3,6 +3,7 @@
 namespace App\Catalog;
 
 use App\RaecClient as RaecClient;
+use App\ZkabelClient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -98,6 +99,48 @@ class Product extends Model
             );
 
         }
+    }
+
+    public function loadPriceFromZkabel()
+    {
+
+        $client = ZkabelClient::getInstance();
+
+        $response = $client->get('product/getPrice/',
+            [
+                'query' => ['article' => $this->vendorArticle,
+                ]
+            ]
+        );
+        if ($response->getStatusCode() != 200) {
+
+
+            return;
+        }
+        $content = json_decode($response->getBody()->getContents());
+        $price = $content->result * 1.3;
+        $this->cost_include = round($price * 0.002, 4);
+        $this->cost_realise = round($price * 0.01, 4);
+        $this->save();
+
+    }
+
+    public function picture()
+    {
+
+        if (\Storage::exists('public/products/' . $this->article . '.jpg')) {
+
+        } elseif (\Storage::exists('public/products/old/' . $this->vendorArticle . '.jpg')) {
+            \Storage::move(
+                'public/products/old/' . $this->vendorArticle . '.jpg',
+                'public/products/' . $this->article . '.jpg'
+            );
+        } else {
+            return \Storage::url('products/nophoto.jpg');
+        }
+        return \Storage::url('products/' . $this->article . '.jpg');
+
+
     }
 
     public function properties()

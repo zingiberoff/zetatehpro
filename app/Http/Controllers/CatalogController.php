@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Catalog\EloquentProductRepository;
 use App\Catalog\Product;
-use App\User;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -20,7 +19,9 @@ class CatalogController extends Controller
     public function search(EloquentProductRepository $productRepository, Request $request)
     {
         $products = $productRepository->search($request->q, 20);
-
+        if ($request->ajax()) {
+            return $products;
+        }
         return view('catalog.search', ['products' => $products]);
     }
 

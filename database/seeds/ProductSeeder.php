@@ -16,7 +16,6 @@ class ProductSeeder extends Seeder
 
     public function run()
     {
-        $client = \App\RaecClient::getInstance();
         $file = fopen(Storage::path('products.csv'), "r");
         while (!feof($file)) {
             $data = explode(';', fgets($file));
@@ -27,7 +26,8 @@ class ProductSeeder extends Seeder
             unset($data['article']);
             $product = Product::updateOrCreate(['article' => $article], $data);
             // $this->command->info('\r'.$article);
-            $product->loadPropertyFromRaec();
+            // $product->loadPropertyFromRaec();
+            $product->loadPriceFromZkabel();
         }
         $this->command->info('success');
         fclose($file);

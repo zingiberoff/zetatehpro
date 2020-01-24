@@ -18,10 +18,10 @@
 </head>
 <body>
 <div id="app">
-
-    @include('layouts.header')
-    @yield('content')
-
+    <v-app>
+        @include('layouts.header')
+        @yield('content')
+    </v-app>
 </div>
 </body>
 </html>

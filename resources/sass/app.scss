@@ -4,6 +4,7 @@
 // Variables
 @import 'variables';
 // Bootstrap
+@import '~vuetify/dist/vuetify.min.css';
 @import '~bootstrap/scss/bootstrap';
 @import "~font-awesome/scss/font-awesome.scss";
 
@@ -174,6 +175,14 @@ nav {
     .image {
       width: 100%;
       min-height: 200px;
+      height: 200px;
+      text-align: center;
+      overflow: hidden;
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+      }
     }
   }
 }

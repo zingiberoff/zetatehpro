@@ -45,6 +45,13 @@ class ProjectController extends Controller
      *
      * @return Response
      */
+    public function saveProducts(Project $project, Request $request)
+    {
+        dump($project);
+        $project->products()->sync($request->all());
+        return [$request->all(), $project];
+    }
+
     public function create(Request $request)
     {
         //
@@ -76,13 +83,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request->input());
         try {
             $this->validate($request, [
                 'project.name' => 'required',
                 'project.description' => 'required',
-                'project.date_release' => 'required',
+                'project.date_release' => 'required|date',
                 'customer.inn' => 'required|max:13',
                 'customer.city' => 'required',
                 'customer.contact_person' => 'required',
@@ -121,12 +126,13 @@ class ProjectController extends Controller
      * @return Response
      */
     public
-    function show(Project $project)
+    function show(Project $project, Request $request)
     {
         //
 
         foreach ($project->products as $product) {
             $product->sum = 0;
+            $product->count = $product->pivot->count;
             if ($project->confirm) {
                 $product->sum += $product->pivot->count * $product->cost_include;
             }
@@ -135,6 +141,9 @@ class ProjectController extends Controller
             }
         }
         $project->customer;
+        if ($request->ajax()) {
+            return $project;
+        }
         return view('project.detail', $project);
     }
 
@@ -148,9 +157,7 @@ class ProjectController extends Controller
     function edit(Project $project)
     {
 
-        $data['project'] = $project;
-
-        return view('project.form.add', $data);
+        return abort(404);
     }
 
     /**
