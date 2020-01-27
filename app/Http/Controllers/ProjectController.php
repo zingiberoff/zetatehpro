@@ -47,7 +47,6 @@ class ProjectController extends Controller
      */
     public function saveProducts(Project $project, Request $request)
     {
-        dump($project);
         $project->products()->sync($request->all());
         return [$request->all(), $project];
     }

@@ -3,6 +3,7 @@
 namespace App\Catalog;
 
 use App\RaecClient as RaecClient;
+use App\Section;
 use App\ZkabelClient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -46,6 +47,11 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = ['*'];
+
+    public function sections()
+    {
+        return $this->belongsToMany(Section::class);
+    }
 
     public function loadPropertyFromRaec()
     {
@@ -113,12 +119,11 @@ class Product extends Model
             ]
         );
         if ($response->getStatusCode() != 200) {
-
-
             return;
         }
         $content = json_decode($response->getBody()->getContents());
         $price = $content->result * 1.3;
+        $this->price = $content->result * 1.3;
         $this->cost_include = round($price * 0.002, 4);
         $this->cost_realise = round($price * 0.01, 4);
         $this->save();

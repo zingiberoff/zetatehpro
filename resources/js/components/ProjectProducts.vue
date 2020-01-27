@@ -138,14 +138,7 @@
             },
             saveAll() {
 
-                for (var i = 0; i < 10; i++) {
 
-                    setTimeout(function () {
-                        console.log(i)
-                    }, 1000)
-
-                }
-                /*  setTimeout()
                   let products = this.products.reduce((result,product) =>{
                       result[product.id] = {
                           count:product.count
@@ -153,7 +146,7 @@
                       return result;
                   },{});
                   console.log(products,this.project);
-                  window.axios.post('/projects/'+this.project.id+'/saveProducts',products)*/
+                window.axios.post('/projects/' + this.project.id + '/saveProducts', products)
             }
         }
     }

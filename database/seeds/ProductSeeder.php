@@ -12,21 +12,27 @@ class ProductSeeder extends Seeder
      *
      * @return  void
      */
-    protected $keys = ['vendorArticle', 'article', 'name'];
+    protected $keys = ['vendorArticle', 'article', 'name', 'path'];
 
     public function run()
     {
         $file = fopen(Storage::path('products.csv'), "r");
         while (!feof($file)) {
             $data = explode(';', fgets($file));
-            if (count($data) != 3) continue;
+            if (count($data) != 4) continue;
             $data = array_map('trim', $data);
             $data = array_combine($this->keys, $data);
             $article = $data['article'];
-            unset($data['article']);
+            $path = $data['path'];
+            $section = \App\Section::firstOrCreateForPath($path);
+
+            unset($data['article'], $data['path']);
+
             $product = Product::updateOrCreate(['article' => $article], $data);
+            $product->sections()->attach($section);
+
             // $this->command->info('\r'.$article);
-            // $product->loadPropertyFromRaec();
+            $product->loadPropertyFromRaec();
             $product->loadPriceFromZkabel();
         }
         $this->command->info('success');

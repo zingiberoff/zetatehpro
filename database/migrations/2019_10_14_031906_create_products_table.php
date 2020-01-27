@@ -19,9 +19,10 @@ class CreateProductsTable extends Migration
             $table->unique('article');
             $table->string('vendorArticle');
             $table->string('name');
+            $table->float('price')->nullable();;
             $table->string('description')->nullable();
-            $table->string('cost_include')->nullable();;
-            $table->string('cost_realise')->nullable();;
+            $table->float('cost_include')->nullable();;
+            $table->float('cost_realise')->nullable();;
             $table->softDeletes();
             $table->timestamps();
         });
