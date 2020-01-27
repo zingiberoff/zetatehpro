@@ -1,6 +1,7 @@
 <?php
 
 use App\Catalog\Product;
+use App\Catalog\Section;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -24,7 +25,7 @@ class ProductSeeder extends Seeder
             $data = array_combine($this->keys, $data);
             $article = $data['article'];
             $path = $data['path'];
-            $section = \App\Section::firstOrCreateForPath($path);
+            $section = Section::firstOrCreateForPath($path);
 
             unset($data['article'], $data['path']);
 

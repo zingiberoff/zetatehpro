@@ -3,7 +3,6 @@
 namespace App\Catalog;
 
 use App\RaecClient as RaecClient;
-use App\Section;
 use App\ZkabelClient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
