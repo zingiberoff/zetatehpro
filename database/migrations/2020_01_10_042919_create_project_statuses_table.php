@@ -27,19 +27,22 @@ class CreateProjectStatusesTable extends Migration
             $table->bigInteger('project_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('payment_type');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
         Schema::table('payments', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
         Schema::table('projects', function (Blueprint $table) {
-            $table->bigInteger('status');
-            $table->string('status_confirmation');
+            $table->bigInteger('status_id')->nullable()->unsigned();
+            $table->string('status_confirmation')->nullable();
+        });
+        Schema::table('projects', function (Blueprint $table) {
+            $table->foreign('status_id')->references('id')->on('project_statuses');
     });
         Schema::table('product_project',function (Blueprint $table){
-            $table->boolean('confirm');
-            $table->boolean('realize');
+            $table->boolean('confirm')->default(0);
+            $table->boolean('realize')->default(0);
         });
     }
 

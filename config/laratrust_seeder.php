@@ -3,7 +3,7 @@
 return [
     'role_structure' => [
         'administrator' => [
-            'users' => 'c,r,u,d',
+            'users' => 'c,r,u,d,confirm',
             'project' => 'r,u'
         ],
         'moderator' => [

@@ -32,7 +32,7 @@ class Section extends Model
 
         return Product::whereHas('sections', function ($q) use ($sections) {
             $q->whereIn('id', $sections);
-        })->get();
+        });
 
 
     }

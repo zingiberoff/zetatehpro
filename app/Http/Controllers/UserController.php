@@ -23,7 +23,6 @@ class UserController extends Controller
             $query->where('name', 'unconfirm_user');
         })->get();
 
-        dump($users);
         return view('user.unconfirmed', ['users' => $users]);
     }
 

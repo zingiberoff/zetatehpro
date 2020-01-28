@@ -96,12 +96,18 @@ class ProjectController extends Controller
         }
 
         $customer = Customer::firstOrCreate(['inn' => $request->input('customer')['inn']], $request->input('customer'));
+
+        dump(array_merge(
+            $request->input('project'),
+            ['customer_id' => $customer->id, 'status' => 1]
+        ));
         $project = Auth::user()->projects()->create(
             array_merge(
                 $request->input('project'),
-                ['customer_id' => $customer->id,]
+                ['customer_id' => $customer->id, 'status_id' => 1]
             )
         );
+
 
         $filesCollection = [];
         if ($request->hasFile('files')) {

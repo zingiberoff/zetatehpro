@@ -12,6 +12,12 @@
                    class="btn inverse"><img src="storage/money.svg" alt="">
                     Бонусная <br> программа
                 </a>
+                @permission('confirm-users')
+                <a href="{{route('unconfirmed_users')}}"
+                   class="btn inverse">
+                    Новые <br> пользователи
+                </a>
+                @endpermission
                 <br>
                 <a href="/price.xlsx" class="btn"><img src="storage/price.svg" alt="">Прайс</a>
                 <a href="" class="btn"><img src="storage/medal.svg" alt="">О бренде</a>

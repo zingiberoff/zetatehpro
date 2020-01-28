@@ -25,6 +25,8 @@ Route::get('/unconfirmed_users', 'UserController@unconfirm')->name('unconfirmed_
 Route::get('/confirm_user/{id?}', 'UserController@confirm')->name('confirm_user');
 
 
+Route::get('/category/getTree', 'CatalogController@getTree')->name('getTree');
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
+Route::get('/catalog/section/{section}', 'CatalogController@section')->name('sectionIndex');
 Route::post('/product/{product}/changeCost', 'ProductController@changeCost')->middleware('role:moderator')->name('changeProductCost');
 Route::get('/search', 'CatalogController@search');
