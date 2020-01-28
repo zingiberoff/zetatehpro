@@ -85,7 +85,7 @@
         </div>
 
         <div class="links">
-
+            <a href="/catalog">Вернуться в каталог</a>
         </div>
     </div>
 </div>
