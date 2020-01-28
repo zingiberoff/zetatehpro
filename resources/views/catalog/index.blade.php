@@ -4,7 +4,7 @@
 
 
     <div class="container catalog mt-4">
-        <left-menu></left-menu>
+      <left-menu></left-menu>
         <div class="card">
             <div class="card-header h1">{{$title??'Каталог продукции'}}</div>
             <div class="p-4">
@@ -32,10 +32,3 @@
 
     {{ $products->links() }}
 @endsection
-<script>
-    import LeftMenu from "../../js/components/LeftMenu";
-
-    export default {
-        components: {LeftMenu}
-    }
-</script>

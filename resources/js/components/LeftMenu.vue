@@ -16,11 +16,12 @@
             ></v-text-field>
 
         </v-sheet>
+        <v-icon>mdi-plus</v-icon>
         <v-card-text>
             <v-treeview
                     :filter="filter"
                     :items="items"
-                    :open.sync="open"
+                    open-all
                     :search="search"
             >
                 <template v-slot:prepend="{ item }">
@@ -28,6 +29,9 @@
                             v-if="item.children"
                             v-text="`mdi-${item.id === 1 ? 'home-variant' : 'folder-network'}`"
                     ></v-icon>
+                </template>
+                <template v-slot:label="{ item, open }">
+                    <a :href="'/catalog/section/'+item.id">{{item.name}}</a>
                 </template>
             </v-treeview>
         </v-card-text>
@@ -112,7 +116,10 @@
         created() {
             window.axios.get('/category/getTree').then((result) => {
                 console.log(result)
-                this.items = Object.assign({}, result.data);
+                result.data.forEach((item,index)=> {
+                    this.items.splice(index, 1, result.data[index]);
+                  //  this.items = Vue.set(this.items, index, );
+                });
             })
         },
         computed: {
