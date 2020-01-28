@@ -71,7 +71,6 @@
         methods: {
             querySelections(v) {
                 this.loading = true;
-                // Simulated ajax query
                 window.axios.get('/search?q=' + v).then((data) => {
                         this.items = data.data;
                         this.loading = false;
