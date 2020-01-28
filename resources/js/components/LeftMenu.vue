@@ -16,7 +16,6 @@
             ></v-text-field>
 
         </v-sheet>
-        <v-icon>mdi-plus</v-icon>
         <v-card-text>
             <v-treeview
                     :filter="filter"
