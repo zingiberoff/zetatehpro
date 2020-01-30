@@ -52,6 +52,7 @@ class ProductSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         DB::table('product_project')->truncate();
         DB::table('product_property_values')->truncate();
+        DB::table('product_section')->truncate();
         Product::truncate();
         Schema::enableForeignKeyConstraints();
 
