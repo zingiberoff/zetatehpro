@@ -17,6 +17,7 @@ class ProductSeeder extends Seeder
 
     public function run()
     {
+        $this->truncateProductsTables();
         $file = fopen(Storage::path('products.csv'), "r");
         while (!feof($file)) {
             $data = explode(';', fgets($file));
