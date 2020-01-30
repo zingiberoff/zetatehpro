@@ -36,6 +36,7 @@ class ProductSeeder extends Seeder
             // $this->command->info('\r'.$article);
             $product->loadPropertyFromRaec();
             $product->loadPriceFromZkabel();
+            $product->picture();
         }
         $this->command->info('success');
         fclose($file);
