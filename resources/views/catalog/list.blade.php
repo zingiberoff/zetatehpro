@@ -8,6 +8,7 @@
                 <div class="card">
                     <div class="image"><img src="{{$product->picture()}}" alt=""></div>
                     <div class="title h5">{{ $product->name }}</div>
+                    <div class="title h6">{{ $product->article }}</div>
                     @role('moderator')
                     <form action="{{route('changeProductCost',['product'=>$product->id])}}"
                           method="post">
