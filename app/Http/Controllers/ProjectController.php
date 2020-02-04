@@ -143,17 +143,11 @@ class ProjectController extends Controller
     function show(Project $project, Request $request)
     {
         //
-
-        foreach ($project->products as $product) {
-            $product->sum = 0;
-            $product->count = $product->pivot->count;
-            if ($project->confirm) {
-                $product->sum += $product->pivot->count * $product->cost_include;
-            }
-            if ($project->realise) {
-                $product->sum += $product->pivot->count * $product->cost_realise;
-            }
-        }
+        $trust = false;
+        if (Auth::user()->hasRole('moderator')) $trust = true;
+        if (Auth::user()->id === $project->user_id) $trust = true;
+        dd(Auth::user(), $project->user);
+        if (!$trust) return abort(403);
         $project->customer;
         if ($request->ajax()) {
             return $project;

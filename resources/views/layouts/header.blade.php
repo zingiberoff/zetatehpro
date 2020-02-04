@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <div class="logo">ЗЭТАТехПро</div>
+            <div class="logo"><img src="/storage/ztp.svg" height="50" alt="ZetaTechPro"></div>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
