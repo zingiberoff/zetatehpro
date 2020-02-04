@@ -19,11 +19,11 @@
                 </a>
                 @endpermission
                 <br>
-                <a href="/price.xlsx" class="btn"><img src="storage/price.svg" alt="">Прайс</a>
-                <a href="" class="btn"><img src="storage/medal.svg" alt="">О бренде</a>
-                <a class="btn"><img src="storage/bank.svg" alt="">Контакты</a>
-                <a class="btn"><img src="storage/convert.svg" alt="">Документация</a>
-                <a class="btn"><img src="storage/download.svg" alt="">Скачать каталог</a>
+                <a href="/storage/price.xlsx" class="btn"><img src="storage/price.svg" alt="">Прайс</a>
+                <a href="/info/brand" class="btn"><img src="storage/medal.svg" alt="">О бренде</a>
+                <a href="/info/contacts" class="btn"><img src="storage/bank.svg" alt="">Контакты</a>
+                <a href="/info/sertificate" class="btn"><img src="storage/convert.svg" alt="">Документация</a>
+                <a href="/storage/ztp_cat.pdf" class="btn"><img src="storage/download.svg" alt="">Скачать каталог</a>
             </div>
             <div class="dekor1"><img src="storage/main_logo.png" alt=""></div>
             <div class="dekor2"></div>

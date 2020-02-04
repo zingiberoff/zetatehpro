@@ -14,7 +14,10 @@
 Route::get('/', 'SiteController@index');
 
 Auth::routes();
-Route::get('api/token/update', 'Auth\ApiTokenController@update')->middleware('role:administrator');
+
+Route::get('/info/{page}', function ($page) {
+    return view($page);
+})->name('info');
 Route::get('api/token/get', 'Auth\ApiTokenController@getToken')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/unconfirmed', 'GuestController@unconfirmed')->name('unconfirmed');
