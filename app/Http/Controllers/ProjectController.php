@@ -82,8 +82,9 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
         try {
-            $this->validate($request, [
+            $validate = $this->validate($request, [
                 'project.name' => 'required',
                 'project.description' => 'required',
                 'project.date_release' => 'required|date',
@@ -92,22 +93,31 @@ class ProjectController extends Controller
                 'customer.contact_person' => 'required',
             ]);
         } catch (ValidationException $e) {
-            return redirect('projects/create')->withInput();
+            return $e;
         }
-
+        \Debugbar::info($request);
         $customer = Customer::firstOrCreate(['inn' => $request->input('customer')['inn']], $request->input('customer'));
-
-        dump(array_merge(
-            $request->input('project'),
-            ['customer_id' => $customer->id, 'status' => 1]
-        ));
         $project = Auth::user()->projects()->create(
             array_merge(
                 $request->input('project'),
                 ['customer_id' => $customer->id, 'status_id' => 1]
             )
         );
+        return $this->saveProject($project, $request);
 
+
+    }
+
+    private function saveProject(Project $project, Request $request)
+    {
+        $customer = Customer::updateOrCreate(['inn' => $request->input('customer')['inn']], $request->input('customer'));
+        $project->customer()->associate($customer);
+        $products = [];
+        foreach ($request->products as $item) {
+            $products[$item['id']] = ['count' => $item['count']];
+        }
+
+        $project->products()->sync($products);
 
         $filesCollection = [];
         if ($request->hasFile('files')) {
@@ -120,8 +130,7 @@ class ProjectController extends Controller
             }
 
         }
-        return redirect('projects');
-
+        return $project;
     }
 
     /**
@@ -175,7 +184,9 @@ class ProjectController extends Controller
     public
     function update(Request $request, Project $project)
     {
-        //
+        $project->update($request->project);
+        return $this->saveProject($project, $request);
+
     }
 
     /**

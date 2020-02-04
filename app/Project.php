@@ -53,7 +53,7 @@ class Project extends Model
 
     protected $appends = ['sumInclude', 'sumRealize', 'sumAll'];
     //
-    protected $fillable = ['name', 'description', 'date_release', 'customer_id', 'status_id', 'status_confirmation'];
+    protected $fillable = ['name', 'description', 'date_release', 'customer_id', 'status_id', 'status_confirmation', 'contractor'];
 
     public function user()
     {

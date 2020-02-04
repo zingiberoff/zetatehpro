@@ -3,9 +3,12 @@
         <AddProducts @add="addProduct"></AddProducts>
         <v-data-table
                 :headers="headers"
-                :items="products"
-                :items-per-page="50"
+                :items="project.products"
+                :items-per-page="500"
                 class="elevation-1"
+                dense
+                hide-default-footer
+
         >
             <template v-slot:item.action="{ item }">
                 <v-icon
@@ -54,7 +57,6 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-btn @click="saveAll">Сохранить</v-btn>
     </div>
 </template>
 
@@ -64,7 +66,6 @@
         props: ['project'],
         data: () => ({
             dialog: false,
-            products: [],
             headers: [
                 {
                     text: 'Артикул',
@@ -74,6 +75,8 @@
                 },
                 {text: 'Наименование', value: 'name'},
                 {text: 'Количество', value: 'count'},
+                {text: 'за включение', value: 'cost_include'},
+                {text: 'за реализацию', value: 'cost_realise'},
                 {text: 'Действия', value: 'action', sortable: false},
             ],
             editedIndex: -1,
@@ -84,9 +87,6 @@
             },
         }),
 
-        created() {
-            this.products = this.project.products
-        },
         watch: {
             dialog(val) {
                 if (!val) {
@@ -99,23 +99,27 @@
                 });
             },
         },
+        computed: {},
         methods: {
 
             addProduct(product) {
                 product.count = 1;
-                this.$set(this.products, this.products.length, Object.assign({}, product));
-                this.editedIndex = this.products.length - 1;
+                let id = this.project.products.length;
+                id = this.project.products.findIndex(item => item.id == product.id) >= 0 || this.project.products.length;
+                console.log(id);
+                this.$set(this.project.products, this.project.products.length, Object.assign({}, product));
+                this.editedIndex = this.project.products.length - 1;
                 this.editedItem = Object.assign({}, product);
                 this.dialog = true;
             },
             editItem(item) {
-                this.editedIndex = this.products.indexOf(item)
+                this.editedIndex = this.project.products.indexOf(item)
                 this.editedItem = Object.assign({}, item)
                 this.dialog = true
             },
 
             deleteItem(item) {
-                const index = this.products.indexOf(item)
+                const index = this.project.products.indexOf(item)
                 confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
             },
 
@@ -129,25 +133,14 @@
 
             save() {
                 if (this.editedIndex > -1) {
-                    Object.assign(this.products[this.editedIndex], this.editedItem)
+                    Object.assign(this.project.products[this.editedIndex], this.editedItem)
 
                 } else {
-                    //  this.products.push(this.editedItem)
+                    //  this.project.products.push(this.editedItem)
                 }
                 this.close()
             },
-            saveAll() {
 
-
-                  let products = this.products.reduce((result,product) =>{
-                      result[product.id] = {
-                          count:product.count
-                      };
-                      return result;
-                  },{});
-                  console.log(products,this.project);
-                window.axios.post('/projects/' + this.project.id + '/saveProducts', products)
-            }
         }
     }
 </script>
