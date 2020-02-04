@@ -75,7 +75,7 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="checkbox" class="form-check-input" name="confirm"
-                                           required autocomplete="new-password"> Я согласен с <a href="/politic">политикой
+                                           required autocomplete="new-password"> Я согласен с <a href="/info/politic">политикой
                                         конфиденциальности</a>
                                 </div>
                             </div>
