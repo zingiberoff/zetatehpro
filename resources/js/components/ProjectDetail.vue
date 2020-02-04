@@ -63,7 +63,7 @@
                 </v-tab-item>
             </v-tabs>
             <v-card-actions>
-                {{project}}
+
                 <v-spacer></v-spacer>
                 <v-btn @click="saveAll" class="mb-4 " v-if="valid">Сохранить проект</v-btn>
             </v-card-actions>
