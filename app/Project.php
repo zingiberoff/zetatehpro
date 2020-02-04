@@ -74,21 +74,22 @@ class Project extends Model
     {
         $this->hasOne(ProjectStatus::class);
     }
-    public function payments(){
+
+    public function payments()
+    {
         $this->belongsTo(Payment::class);
     }
 
     public function files()
     {
-        return $this->hasMany(ProjectFi-le::class);
+        return $this->hasMany(ProjectFile::class);
     }
 
     public function getSumIncludeAttribute()
     {
         $result = 0;
         foreach ($this->products as $product) {
-            $result += $product->cost_include * $product->pivot->count;
-
+            $result += $product->cost_include * $product->pivot->count * $product->pivot->confirm;
         }
         return $result;
     }
@@ -97,8 +98,7 @@ class Project extends Model
     {
         $result = 0;
         foreach ($this->products as $product) {
-            $result += $product->cost_realise * $product->pivot->count;
-
+            $result += $product->cost_realise * $product->pivot->count * $product->pivot->realize;
         }
         return $result;
     }
