@@ -7,8 +7,8 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="tel:88002012342 " class="phone">8 800 201-23-42 <span
-                    class="phone-title">Звонки для регионов бесплатно</span></a>
+        {{--        <a href="tel:88002012342 " class="phone">8 800 201-23-42 <span--}}
+        {{--                    class="phone-title">Звонки для регионов бесплатно</span></a>--}}
         <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
