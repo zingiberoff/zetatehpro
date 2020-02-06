@@ -146,7 +146,7 @@ class ProjectController extends Controller
         $trust = false;
         if (Auth::user()->hasRole('moderator')) $trust = true;
         if (Auth::user()->id === $project->user_id) $trust = true;
-        dd(Auth::user(), $project->user);
+
         if (!$trust) return abort(403);
         $project->customer;
         if ($request->ajax()) {
