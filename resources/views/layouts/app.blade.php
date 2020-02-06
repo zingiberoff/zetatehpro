@@ -23,5 +23,6 @@
         @yield('content')
     </v-app>
 </div>
+<script src="//code-ya.jivosite.com/widget/WKvvlDPiFN" async></script>
 </body>
 </html>

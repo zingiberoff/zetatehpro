@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <a href="/info/bonus">Условия бонусной программы</a>
                 <div class="card">
                     <div class="card-header">Проекты</div>
 
