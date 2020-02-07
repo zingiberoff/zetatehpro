@@ -63,7 +63,10 @@
 <script>
     export default {
         name: "ProjectProducts",
-        props: ['project'],
+        props: ['project', {
+            type: Boolean,
+            default: false
+        }],
         data: () => ({
             dialog: false,
             headers: [

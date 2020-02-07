@@ -57,9 +57,9 @@
         <div class="home">
             <h1>Проектные решения</h1>
             <div class="links">
-                <a href="{{route('catalog')}}" class="btn inverse"><img src="storage/cart.svg" alt="">Каталог</a>
+                <a href="{{route('catalog')}}" class="btn inverse"><img src="/storage/cart.svg" alt="">Каталог</a>
                 <a href="{{route('projects')}}"
-                   class="btn inverse"><img src="storage/money.svg" alt="">
+                   class="btn inverse"><img src="/storage/money.svg" alt="">
                     Проекты
                 </a>
                 @permission('confirm-users')
@@ -70,44 +70,44 @@
                 </a>
                 @endpermission
                 <br>
-                <a href="/storage/price.xlsx" class="btn"><img src="storage/price.svg" alt="">Прайс</a>
+                <a href="/storage/price.xlsx" class="btn"><img src="/storage/price.svg" alt="">Прайс</a>
                 @if(Request::route()->page=='brand')
-                    <div class="btn active"><img src="storage/medal.svg" alt="">О бренде</div>
+                    <div class="btn active"><img src="/storage/medal.svg" alt="">О бренде</div>
                 @else
                     <a href="{{route('info',['page'=>'brand'])}}" class="btn">
-                        <img src="storage/medal.svg" alt="">О бренде
+                        <img src="/storage/medal.svg" alt="">О бренде
                     </a>
                 @endif
 
                 @if(Request::route()->page=='contacts')
-                    <div class="btn active"><img src="storage/bank.svg" alt="">Контакты</div>
+                    <div class="btn active"><img src="/storage/bank.svg" alt="">Контакты</div>
                 @else
                     <a href="{{route('info',['page'=>'contacts'])}}" class="btn">
-                        <img src="storage/bank.svg" alt="">Контакты
+                        <img src="/storage/bank.svg" alt="">Контакты
                     </a>
                 @endif
 
                 @if(Request::route()->page=='sertificate')
-                    <div class="btn active"><img src="storage/convert.svg" alt="">Документация</div>
+                    <div class="btn active"><img src="/storage/convert.svg" alt="">Документация</div>
                 @else
                     <a href="{{route('info',['page'=>'sertificate'])}}" class="btn">
-                        <img src="storage/convert.svg" alt="">Документация
+                        <img src="/storage/convert.svg" alt="">Документация
                     </a>
                 @endif
 
                 @if(Request::route()->page=='bonus')
-                    <div class="btn active"><img src="storage/money.svg" alt="">Бонусная <br>программа
+                    <div class="btn active"><img src="/storage/money.svg" alt="">Бонусная <br>программа
                     </div>
                 @else
                     <a href="{{route('info',['page'=>'bonus'])}}" class="btn">
-                        <img src="storage/money.svg" alt="">Бонусная <br>программа
+                        <img src="/storage/money.svg" alt="">Бонусная <br>программа
                     </a>
                 @endif
 
-                <a href="/storage/ztp_cat.pdf" target="_blank" class="btn"><img src="storage/download.svg" alt="">Скачать
+                <a href="/storage/ztp_cat.pdf" target="_blank" class="btn"><img src="/storage/download.svg" alt="">Скачать
                     каталог</a>
             </div>
-            <div class="dekor1"><img src="storage/main_logo.png" alt=""></div>
+            <div class="dekor1"><img src="/storage/main_logo.png" alt=""></div>
             <div class="dekor2"></div>
         </div>
 
