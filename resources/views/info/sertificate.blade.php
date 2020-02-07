@@ -1,4 +1,4 @@
-@extends('layouts.static')
+@extends('layouts.app')
 
 @section('content')
     <b>Вся продукция zetatechpro проходит три стадии контроля качества:</b><br>

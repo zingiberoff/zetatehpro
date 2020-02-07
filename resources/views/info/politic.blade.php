@@ -1,4 +1,4 @@
-@extends('layouts.static')
+@extends('layouts.app')
 
 @section('content')
     <h1>Политики конфиденциальности</h1>

@@ -16,7 +16,7 @@ Route::get('/', 'SiteController@index');
 Auth::routes();
 
 Route::get('/info/{page}', function ($page) {
-    return view($page);
+    return view('info.' . $page);
 })->name('info');
 Route::get('api/token/get', 'Auth\ApiTokenController@getToken')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
