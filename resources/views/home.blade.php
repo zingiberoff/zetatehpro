@@ -2,6 +2,6 @@
 
 @section('content')
 
-
+    <home-carts></home-carts>
 
 @endsection

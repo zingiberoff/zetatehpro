@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="/info/bonus">Условия бонусной программы</a>
+
                 <div class="card">
                     <div class="card-header">Проекты</div>
 
@@ -22,7 +22,6 @@
                                 <td>Баллы</td>
                                 @if($moderate ?? '')
                                     <td>Пользователь</td>
-                                    <td>Действия</td>
                                 @endif
                             </tr>
                             </thead>
@@ -38,15 +37,6 @@
                                     <td> {{$project->sumAll}}</td>
                                     @if($moderate ?? '')
                                         <td>{{$project->user->name}}</td>
-                                        <td>
-                                            <div class="btn">
-                                                <i class="fa fa-check"></i>
-                                            </div>
-                                            <div class="btn">
-                                                <i class="fa fa-check-circle"></i>
-                                            </div>
-
-                                        </td>
                                     @endif
                                 </tr>
 
