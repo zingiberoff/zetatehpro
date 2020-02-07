@@ -20,8 +20,8 @@
             <v-treeview
                     :filter="filter"
                     :items="items"
-                    open-all
                     :search="search"
+                    :open="open"
             >
                 <template v-slot:prepend="{ item }">
                     <v-icon
@@ -34,6 +34,7 @@
                 </template>
             </v-treeview>
         </v-card-text>
+
     </v-card>
 
 
@@ -42,74 +43,10 @@
 <script>
     export default {
         name: "LeftMenu",
+        props: ["section"],
         data: () => ({
-            items: [
-                {
-                    id: 1,
-                    name: 'Vuetify Human Resources',
-                    children: [
-                        {
-                            id: 2,
-                            name: 'Core team',
-                            children: [
-                                {
-                                    id: 201,
-                                    name: 'John',
-                                },
-                                {
-                                    id: 202,
-                                    name: 'Kael',
-                                },
-                                {
-                                    id: 203,
-                                    name: 'Nekosaur',
-                                },
-                                {
-                                    id: 204,
-                                    name: 'Jacek',
-                                },
-                                {
-                                    id: 205,
-                                    name: 'Andrew',
-                                },
-                            ],
-                        },
-                        {
-                            id: 3,
-                            name: 'Administrators',
-                            children: [
-                                {
-                                    id: 301,
-                                    name: 'Ranee',
-                                },
-                                {
-                                    id: 302,
-                                    name: 'Rachel',
-                                },
-                            ],
-                        },
-                        {
-                            id: 4,
-                            name: 'Contributors',
-                            children: [
-                                {
-                                    id: 401,
-                                    name: 'Phlow',
-                                },
-                                {
-                                    id: 402,
-                                    name: 'Brandon',
-                                },
-                                {
-                                    id: 403,
-                                    name: 'Sean',
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            open: [1, 2],
+            items: [],
+            open: [1],
             search: null,
         }),
         created() {
@@ -117,6 +54,8 @@
                 console.log(result)
                 result.data.forEach((item,index)=> {
                     this.items.splice(index, 1, result.data[index]);
+                    this.open = this.section.parens.map(item => item.id)
+                    this.open.push(this.section.id)
                   //  this.items = Vue.set(this.items, index, );
                 });
             })

@@ -17,13 +17,13 @@ Auth::routes();
 
 Route::get('/info/{page}', function ($page) {
     return view('info.' . $page);
-})->name('info');
+})->name('info')->middleware('auth');
 Route::get('api/token/get', 'Auth\ApiTokenController@getToken')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/unconfirmed', 'GuestController@unconfirmed')->name('unconfirmed');
 Route::get('/test', 'HomeController@test')->name('home');
 Route::resource('projects', 'ProjectController')->name('index', 'projects');
-Route::post('projects/{project}/saveProducts', 'ProjectController@saveProducts')->name('saveProducts');
+//Route::post('projects/{project}/saveProducts', 'ProjectController@saveProducts')->name('saveProducts');
 Route::get('/unconfirmed_users', 'UserController@unconfirm')->name('unconfirmed_users');
 Route::get('/confirm_user/{id?}', 'UserController@confirm')->name('confirm_user');
 
