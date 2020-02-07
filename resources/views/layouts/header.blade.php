@@ -71,10 +71,39 @@
                 @endpermission
                 <br>
                 <a href="/storage/price.xlsx" class="btn"><img src="storage/price.svg" alt="">Прайс</a>
-                <a href="/info/brand" class="btn"><img src="storage/medal.svg" alt="">О бренде</a>
-                <a href="/info/contacts" class="btn"><img src="storage/bank.svg" alt="">Контакты</a>
-                <a href="/info/sertificate" class="btn"><img src="storage/convert.svg" alt="">Документация</a>
-                <a href="/info/bonus" class="btn"><img src="storage/convert.svg" alt="">Бонусная <br>программа</a>
+                @if(Request::route()->page=='brand')
+                    <div class="btn active"><img src="storage/medal.svg" alt="">О бренде</div>
+                @else
+                    <a href="{{route('info',['page'=>'brand'])}}" class="btn">
+                        <img src="storage/medal.svg" alt="">О бренде
+                    </a>
+                @endif
+
+                @if(Request::route()->page=='contacts')
+                    <div class="btn active"><img src="storage/bank.svg" alt="">Контакты</div>
+                @else
+                    <a href="{{route('info',['page'=>'contacts'])}}" class="btn">
+                        <img src="storage/bank.svg" alt="">Контакты
+                    </a>
+                @endif
+
+                @if(Request::route()->page=='sertificate')
+                    <div class="btn active"><img src="storage/convert.svg" alt="">Документация</div>
+                @else
+                    <a href="{{route('info',['page'=>'sertificate'])}}" class="btn">
+                        <img src="storage/convert.svg" alt="">Документация
+                    </a>
+                @endif
+
+                @if(Request::route()->page=='bonus')
+                    <div class="btn active"><img src="storage/money.svg" alt="">Бонусная <br>программа
+                    </div>
+                @else
+                    <a href="{{route('info',['page'=>'bonus'])}}" class="btn">
+                        <img src="storage/money.svg" alt="">Бонусная <br>программа
+                    </a>
+                @endif
+
                 <a href="/storage/ztp_cat.pdf" target="_blank" class="btn"><img src="storage/download.svg" alt="">Скачать
                     каталог</a>
             </div>

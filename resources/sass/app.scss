@@ -71,7 +71,7 @@ nav {
     line-height: 21px;
     border-radius: 0;
     color: black;
-    background: white;
+    background: #ffffff;
     font-size: 18px;
     margin-top: 30px;
     display: inline-flex;
@@ -90,6 +90,12 @@ nav {
   .btn.inverse {
     color: white;
     background: $main;
+
+  }
+
+  .btn.active {
+    font-weight: 900;
+    box-shadow: $shadow-pull;
   }
 
   .dekor1 {
