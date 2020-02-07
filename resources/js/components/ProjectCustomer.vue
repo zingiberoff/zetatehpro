@@ -5,8 +5,9 @@
 
         <v-col cols="12">
             <v-text-field
-                    :rules="rules"
+                    :rules="[       v => (v || '').length === 10 || 'Инн должен быть длинной 10 символов',]"
                     label="ИНН"
+                    maxlength="10"
                     v-model="project.customer.inn"
             ></v-text-field>
             <v-text-field :rules="rules"
