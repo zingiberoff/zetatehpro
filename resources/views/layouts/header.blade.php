@@ -65,7 +65,7 @@
                 @permission('confirm-users')
                 <a href="{{route('unconfirmed_users')}}"
                    class="btn inverse">
-                    <v-icon>mdi-user</v-icon>
+                    <v-icon>mdi-account-cog</v-icon>
                     Новые <br> пользователи
                 </a>
                 @endpermission
@@ -96,11 +96,14 @@
                 @endif
 
                 @if(Request::route()->page=='bonus')
-                    <div class="btn active"><img src="/storage/money.svg" alt="">Бонусная <br>программа
+                    <div class="btn active">
+                        <v-icon>mdi-account-cash-outline</v-icon>
+                        Бонусная <br>программа
                     </div>
                 @else
                     <a href="{{route('info',['page'=>'bonus'])}}" class="btn">
-                        <img src="/storage/money.svg" alt="">Бонусная <br>программа
+                        <v-icon>mdi-account-cash-outline</v-icon>
+                        Бонусная <br>программа
                     </a>
                 @endif
 
