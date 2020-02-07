@@ -24,10 +24,10 @@ class CatalogController extends Controller
 
     public function section(Section $section)
     {
-
+        $section->parens = $section->ancestors()->get('id');
         $products = $section->allProducts()->paginate(24);
 
-        return view('catalog.index', ['products' => $products, 'title' => $section->name]);
+        return view('catalog.index', ['products' => $products, 'section' => $section]);
     }   //
 
     public function search(EloquentProductRepository $productRepository, Request $request)
