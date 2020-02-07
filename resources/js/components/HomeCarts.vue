@@ -51,7 +51,6 @@
 <style lang="scss" scoped>
     .items {
         margin: 70px 50px auto;
-        width: 100%;
         display: flex;
         justify-content: space-evenly;
     }

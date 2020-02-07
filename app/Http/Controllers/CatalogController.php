@@ -32,7 +32,7 @@ class CatalogController extends Controller
 
     public function search(EloquentProductRepository $productRepository, Request $request)
     {
-        $products = $productRepository->search($request->q, 20);
+        $products = $productRepository->search($request->q);
         if ($request->ajax()) {
             return $products;
         }
