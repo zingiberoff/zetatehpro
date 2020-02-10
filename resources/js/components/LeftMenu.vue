@@ -47,7 +47,7 @@
         data: () => ({
             items: [],
             open: [1],
-            search: null, zeta
+            search: null,
         }),
         created() {
             window.axios.get('/category/getTree').then((result) => {
