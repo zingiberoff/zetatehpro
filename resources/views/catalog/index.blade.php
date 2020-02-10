@@ -10,7 +10,7 @@
             </div>
             <div class="col-12 col-lg-9">
                 <div class="card">
-                    <div class="card-header h1">{{$section ?? ''->name??'Каталог продукции'}}</div>
+                    <div class="card-header h1">{{$section->name ?? 'Каталог продукции'}}</div>
                     <div class="p-4">
                         <form action="{{ url('search') }}" method="get">
                             <div class="form-group">
