@@ -54,8 +54,10 @@
                 console.log(result)
                 result.data.forEach((item,index)=> {
                     this.items.splice(index, 1, result.data[index]);
-                    this.open = this.section.parens.map(item => item.id)
-                    this.open.push(this.section.id)
+                    if (this.section.parens) {
+                        this.open = this.section.parens.map(item => item.id)
+                        this.open.push(this.section.id)
+                    }
                   //  this.items = Vue.set(this.items, index, );
                 });
             })
