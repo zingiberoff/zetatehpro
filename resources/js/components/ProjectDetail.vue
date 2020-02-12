@@ -137,8 +137,8 @@
                     })
                 } else {
                     window.axios.put('/projects/' + this.project_id, this.project).then(response => {
-                        console.log(response),
-                            window.location.reload()
+                        console.log(response)
+                        //  window.location.reload()
                     })
                 }
 

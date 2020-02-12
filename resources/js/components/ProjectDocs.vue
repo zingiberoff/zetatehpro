@@ -3,11 +3,13 @@
         <v-file-input
                 :show-size="1000"
                 @click:append-outer="upload"
-                append-outer-icon="mdi-content-save"
+                :append-outer-icon="files.length>0?'mdi-content-save':undefined"
                 color="deep-purple accent-4"
                 counter
+                :rules="rules"
                 label="File input"
                 multiple
+                accept="image/*,application/pdf,application/x-pdf,"
                 outlined
                 placeholder="Select your files"
                 prepend-icon="mdi-paperclip"
@@ -90,11 +92,27 @@
         name: "",
         data: () => ({
             files: [],
+            rules: [value => {
+
+                let maxsize = 10000000;
+                console.log(value.reduce((size, file) => size + file.size, 0))
+                return !value
+                    || value.reduce((size, file) => size + file.size, 0) < maxsize
+                    || 'Файл не должен превышать ' + humanReadableFileSize(maxsize) + '!'
+            }]
 
         }),
         props: ['project'],
-        created() {
-            console.log(this.project)
+        mounted() {
+
+            setTimeout(function () {
+                console.log(1)
+                console.log(this)
+                console.log(this.$props.project.files)
+                this.loadFiles(this.$props.project.files)
+            }, 2, this)
+
+
         },
         methods: {
             downloadURL(url) {
@@ -117,6 +135,7 @@
                     )
             },
             loadFiles(data) {
+                console.log(data);
                 this.project.files = data.map((file) => {
                     let icon = 'mdi-file-image-outline';
                     if (file.path.indexOf('.pdf') + 1) {

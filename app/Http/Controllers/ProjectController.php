@@ -31,8 +31,6 @@ class ProjectController extends Controller
         if (!count($projectFile->projects)) {
             $projectFile->delete();
         }
-        \Debugbar::info($projectFile, count($projectFile->projects));
-
         return $project->files;
     }
 
@@ -128,7 +126,6 @@ class ProjectController extends Controller
         } catch (ValidationException $e) {
             return $e;
         }
-        \Debugbar::info($request);
         $customer = Customer::firstOrCreate(['inn' => $request->input('customer')['inn']], $request->input('customer'));
         $project = Auth::user()->projects()->create(
             array_merge(
@@ -152,7 +149,8 @@ class ProjectController extends Controller
 
         $project->products()->sync($products);
 
-
+        $project->save();
+        $project->refresh();
         return $project;
     }
 
