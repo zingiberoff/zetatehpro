@@ -10,13 +10,9 @@
             <v-tabs v-model="currentTab" vertical>
                 <v-tab>
                     <v-icon left>mdi-book</v-icon>
-                    <v-badge
-                            color="green"
-                            content="6"
-                    >
 
                         Описание проекта
-                    </v-badge>
+
 
                 </v-tab>
 
