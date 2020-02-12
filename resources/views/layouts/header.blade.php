@@ -103,7 +103,7 @@
                     </div>
                 @else
                     <a href="{{route('info',['page'=>'bonus'])}}" class="btn">
-                        <v-icon>mdi-account-cash-outline</v-icon>
+                        <img src="/storage/bonus.svg" alt="">
                         Бонусная <br>программа
                     </a>
                 @endif
