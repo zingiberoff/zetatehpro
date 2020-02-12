@@ -7,7 +7,7 @@
             <v-toolbar color="primary" dark flat>
                 <v-toolbar-title>Проект #{{project_id}} {{project.project.name}}</v-toolbar-title>
             </v-toolbar>
-            <v-tabs vertical>
+            <v-tabs v-model="currentTab" vertical>
                 <v-tab>
                     <v-icon left>mdi-book</v-icon>
                     <v-badge
@@ -65,7 +65,8 @@
             <v-card-actions>
 
                 <v-spacer></v-spacer>
-                <v-btn @click="saveAll" class="mb-4 " v-if="valid">Сохранить проект</v-btn>
+                <v-btn @click="saveAll" class="mb-4 " v-if="showSave">Сохранить проект</v-btn>
+                <v-btn @click="nextTab" class="mb-4 " v-if="showNext">Далее</v-btn>
             </v-card-actions>
         </v-form>
     </v-card>
@@ -88,16 +89,26 @@
         },
         data() {
             return {
+                currentTab: 0,
                 project: {
+                    id: '',
                     project: {'date_release': (new Date()).toISOString().substr(0, 10)},
                     customer: {},
-                    products: []
+                    products: [],
+                    files: []
                 },
+                test: null,
                 valid: false,
             }
         },
         watch: {},
         computed: {
+            showNext() {
+                return this.valid
+            },
+            showSave() {
+                return this.valid && this.project.customer.inn
+            },
             showCostumer() {
                 return this.project.project.name
             },
@@ -105,13 +116,16 @@
                 return this.valid;
             },
             showDocuments() {
-                return this.valid;
+                return this.project_id;
             },
             countErrorMain() {
                 return 2;
             }
         },
         methods: {
+            nextTab() {
+                this.currentTab++;
+            },
             saveAll() {
                 this.validate();
                 if (!this.valid) return;
@@ -138,6 +152,7 @@
         created() {
             if (!this.create) {
                 window.axios.get('/projects/' + this.project_id).then((response) => {
+                    this.project.id = this.project_id;
                     this.$set(this.project.project, 'name', response.data.name);
                     this.$set(this.project.project, 'description', response.data.description);
                     this.$set(this.project.project, 'sumInclude', response.data.sumInclude);

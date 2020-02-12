@@ -22,6 +22,8 @@ Route::get('api/token/get', 'Auth\ApiTokenController@getToken')->middleware('aut
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/unconfirmed', 'GuestController@unconfirmed')->name('unconfirmed');
 Route::get('/test', 'HomeController@test')->name('home');
+Route::post('projects/{project}/files', 'ProjectController@saveFile');
+Route::delete('projects/{project}/files/{projectFile}', 'ProjectController@deleteFile');
 Route::resource('projects', 'ProjectController')->name('index', 'projects');
 //Route::post('projects/{project}/saveProducts', 'ProjectController@saveProducts')->name('saveProducts');
 Route::get('/unconfirmed_users', 'UserController@unconfirm')->name('unconfirmed_users');

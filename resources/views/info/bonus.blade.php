@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <div class="container">
     <h1>Бонусная программа «</b><b style='mso-bidi-font-weight:normal'><span
                     lang=EN-US style='mso-ansi-language:EN-US'>ZetaTechPro</span>» для
             проектировщиков
@@ -103,5 +103,5 @@ Wingdings'><span style='mso-list:Ignore'>&uuml;<span style='font:7.0pt "Times Ne
         проектировщик, работающий с системами прокладки кабеля, закладывающий в проекты
         кабельные вводы, металлорукав, фитинги для <span class=SpellE>металлорукава</span>,
         <span class=SpellE>клеммные</span> коробки. </p>
-
+    </div>
 @endsection

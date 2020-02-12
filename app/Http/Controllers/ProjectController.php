@@ -23,6 +23,39 @@ class ProjectController extends Controller
      *
      * @return Response
      */
+    public function deleteFile(Project $project, ProjectFile $projectFile, Request $request)
+    {
+
+        $project->files()->detach($projectFile->id);
+        $projectFile->refresh();
+        if (!count($projectFile->projects)) {
+            $projectFile->delete();
+        }
+        \Debugbar::info($projectFile, count($projectFile->projects));
+
+        return $project->files;
+    }
+
+    public function saveFile(Project $project, Request $request)
+    {
+
+        $filesCollection = [];
+        if ($request->hasFile('files')) {
+            $uploadFiles = $request->allFiles()['files'];
+            /** @var \Illuminate\Http\UploadedFile $uploadFile */
+
+            foreach ($uploadFiles as $uploadFile) {
+                $file = ProjectFile::store($uploadFile);
+
+                $filesCollection[] = $file->id;
+            }
+            $project->files()->syncWithoutDetaching($filesCollection);
+
+        }
+
+        return $project->files;
+    }
+
     public function index()
     {
         //
@@ -119,17 +152,7 @@ class ProjectController extends Controller
 
         $project->products()->sync($products);
 
-        $filesCollection = [];
-        if ($request->hasFile('files')) {
-            $uploadFiles = $request->allFiles()['files'];
-            /** @var \Illuminate\Http\UploadedFile $uploadFile */
-            foreach ($uploadFiles as $uploadFile) {
-                $projectFile = new ProjectFile(['project_id' => $project->id], $uploadFile);
-                $filesCollection[] = $projectFile;
-                $projectFile->save();
-            }
 
-        }
         return $project;
     }
 
@@ -152,6 +175,7 @@ class ProjectController extends Controller
 
         if (!$trust) return abort(403);
         $project->customer;
+        $project->files;
         if ($request->ajax()) {
             return $project;
         }
