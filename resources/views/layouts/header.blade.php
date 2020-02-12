@@ -51,7 +51,8 @@
         </div>
     </div>
 </nav>
-@auth
+
+@permission('update-project')
     <main>
 
         <div class="home">
@@ -115,4 +116,4 @@
         </div>
 
     </main>
-@endauth
+@endpermission

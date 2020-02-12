@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-
-        <project-detail project_id="{{$id}}"></project-detail>
-
+        @canAndOwns('update-project', $project)
+        <project-detail project_id="{{$project->id}}"></project-detail>
+        @endOwns
 
     </div>
 

@@ -177,7 +177,7 @@ class ProjectController extends Controller
         if ($request->ajax()) {
             return $project;
         }
-        return view('project.detail', $project);
+        return view('project.detail', ['project' => $project]);
     }
 
     /**
