@@ -44,7 +44,7 @@
 
             >
                 <v-list-item-avatar>
-                    <img :alt="item.name" :src="item.src" v-if="item.icon!=='image'">
+                    <img :alt="item.name" :src="item.src" v-if="item.icon==='image'">
                     <v-icon class="grey lighten-1 white--text"
                             v-else
                             v-text="item.icon"
@@ -69,12 +69,12 @@
                         <v-btn @click="downloadURL(item.src)"
                                icon
                         >
-                            <v-icon color="grey lighten-1"> mdi-download</v-icon>
+                            <v-icon color="green lighten-1"> mdi-download</v-icon>
                         </v-btn>
                         <v-btn @click="deleteFile(item.id)"
                                icon
                         >
-                            <v-icon color="grey lighten-1">mdi-information</v-icon>
+                            <v-icon color="red lighten-1 ">mdi-file-remove-outline</v-icon>
                         </v-btn>
                     </v-flex>
                 </v-list-item-action>
@@ -104,16 +104,15 @@
         }),
         props: ['project'],
         mounted() {
-
-            setTimeout(function () {
-                console.log(1)
-                console.log(this)
-                console.log(this.$props.project.files)
-                this.loadFiles(this.$props.project.files)
-            }, 2, this)
-
-
+            this.loadFiles(this.project.files)
         },
+        /* computed: {
+             projectFiles() {
+                 this.loadFiles(this.project.files);
+                 return this.project.files;
+             }
+         },
+ */
         methods: {
             downloadURL(url) {
                 var hiddenIFrameID = 'hiddenDownloader',
@@ -144,8 +143,9 @@
                     if (file.path.indexOf('.doc') + 1) {
                         icon = 'mdi-file-word-outline '
                     }
-                    if (file.path.indexOf('.jpg') + 1 || file.path.indexOf('.png') + 1) {
-                        let icon = 'image';
+                    console.log(file.path,file.path.indexOf('.jpg'));
+                    if (file.path.indexOf('.jpg') + 1 ||file.path.indexOf('.jpeg') + 1 || file.path.indexOf('.png') + 1) {
+                         icon = 'image';
                     }
 
 

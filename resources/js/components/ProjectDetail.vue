@@ -153,6 +153,7 @@
             if (!this.create) {
                 window.axios.get('/projects/' + this.project_id).then((response) => {
                     this.project.id = this.project_id;
+                    this.project.files =  response.data.files;
                     this.$set(this.project.project, 'name', response.data.name);
                     this.$set(this.project.project, 'description', response.data.description);
                     this.$set(this.project.project, 'sumInclude', response.data.sumInclude);
