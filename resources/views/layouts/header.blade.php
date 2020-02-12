@@ -98,7 +98,7 @@
 
                 @if(Request::route()->page=='bonus')
                     <div class="btn active">
-                        <v-icon>mdi-account-cash-outline</v-icon>
+                        <img src="/storage/bonus.svg" alt="">
                         Бонусная <br>программа
                     </div>
                 @else
