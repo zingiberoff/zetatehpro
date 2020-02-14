@@ -65,6 +65,18 @@
                 <v-btn @click="nextTab" class="mb-4 " v-if="showNext">Далее</v-btn>
             </v-card-actions>
         </v-form>
+        <v-snackbar
+                v-model="snackbar"
+        >
+            Проект сохранен
+            <v-btn
+                    @click="snackbar = false"
+                    color="pink"
+                    text
+            >
+                Закрыть
+            </v-btn>
+        </v-snackbar>
     </v-card>
 
 
@@ -85,6 +97,7 @@
         },
         data() {
             return {
+                snackbar: false,
                 actions: [],
                 currentTab: 0,
                 project: {
@@ -130,12 +143,14 @@
 
                     window.axios.post('/projects', this.project).then(response => {
                         console.log(response),
-                            window.location = '/projects'
+                            this.snackbar = true;
+                        //       window.location = '/projects'
                     })
                 } else {
                     window.axios.put('/projects/' + this.project_id, this.project).then(response => {
-                        console.log(response)
-                        //  window.location.reload()
+                        console.log(response);
+                        this.snackbar = true;
+                        // window.location.reload()
                     })
                 }
 
