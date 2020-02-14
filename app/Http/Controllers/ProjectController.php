@@ -133,7 +133,7 @@ class ProjectController extends Controller
         $project->customer()->associate($customer);
         $products = [];
         foreach ($request->products as $item) {
-            $products[$item['id']] = ['count' => $item['count']];
+            $products[$item['id']] = ['count' => $item['pivot']['count']];
         }
 
         $project->products()->sync($products);

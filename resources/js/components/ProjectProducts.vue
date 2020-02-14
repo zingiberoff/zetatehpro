@@ -44,7 +44,7 @@
 
                             <v-col cols="12" md="4" sm="6">
                                 <v-text-field @change="save" autofocus id="countInput" label="Количество"
-                                              v-model="editedItem.count"></v-text-field>
+                                              v-model="editedItem.pivot.count"></v-text-field>
                             </v-col>
                         </v-row>
                     </v-container>
@@ -52,8 +52,8 @@
 
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn @click="close" color="blue darken-1" text>Cancel</v-btn>
-                    <v-btn @click="save" color="blue darken-1" text>Save</v-btn>
+                    <v-btn @click="close" color="blue darken-1" text>Отмена</v-btn>
+                    <v-btn @click="save" color="blue darken-1" text>Сохранить</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -77,7 +77,7 @@
                     value: 'article',
                 },
                 {text: 'Наименование', value: 'name'},
-                {text: 'Количество', value: 'count'},
+                {text: 'Количество', value: 'pivot.count'},
                 {text: 'за включение', value: 'cost_include'},
                 {text: 'за реализацию', value: 'cost_realise'},
                 {text: 'Действия', value: 'action', sortable: false},
@@ -86,7 +86,10 @@
             editedItem: {
                 article: '',
                 name: '',
-                count: 0,
+                pivot: {
+                    count: 0,
+                }
+
             },
         }),
 
@@ -106,7 +109,12 @@
         methods: {
 
             addProduct(product) {
-                product.count = 1;
+
+                if (product.pivot == undefined) {
+                    product.pivot = {}
+                }
+                console.log(product, product.pivot);
+                product.pivot.count = 1;
                 let id = this.project.products.length;
                 id = this.project.products.findIndex(item => item.id == product.id) >= 0 || this.project.products.length;
                 console.log(id);

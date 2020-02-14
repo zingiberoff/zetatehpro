@@ -10,6 +10,6 @@
                 +7(953)762-87-86</a></div>
         <div class="h2"><a href="mailto:29@7899.ru">
                 <v-icon>mdi-mail</v-icon>
-                29@7899.ru</a></div>
+                manager@zetatechpro.ru</a></div>
     </div>
 @endsection

@@ -33,16 +33,7 @@ class HomeController extends Controller
     {
 
         /** @var $project Project */
-
-        $cusomer = Customer::firstOrCreate(['inn' => '123456789'], ['name' => 'Customer Name', 'city' => 'City', 'contact_person' => 'FIO']);
-
-        $project = Auth::user()->projects()->create([
-            'name' => 'Name of project',
-            'description' => 'Project descipions text',
-            'date_release' => '2019-12-12',
-            'customer_id' => $cusomer->id,
-        ]);
-
+        dump(\Storage::url('products.csv'));
 
         return;
     }
