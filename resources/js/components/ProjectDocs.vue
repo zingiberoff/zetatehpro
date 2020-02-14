@@ -66,11 +66,13 @@
 
                 <v-list-item-action>
                     <v-flex>
-                        <v-btn @click="downloadURL(item.src)"
-                               icon
-                        >
-                            <v-icon color="green lighten-1"> mdi-download</v-icon>
-                        </v-btn>
+                        <a :download="item.name" :href="item.src">
+                            <v-btn
+                                    icon
+                            >
+                                <v-icon color="green lighten-1"> mdi-download</v-icon>
+                            </v-btn>
+                        </a>
                         <v-btn @click="deleteFile(item.id)"
                                icon
                         >
@@ -104,15 +106,10 @@
         }),
         props: ['project'],
         mounted() {
+            console.log(this.project);
             this.loadFiles(this.project.files)
         },
-        /* computed: {
-             projectFiles() {
-                 this.loadFiles(this.project.files);
-                 return this.project.files;
-             }
-         },
- */
+
         methods: {
             downloadURL(url) {
                 var hiddenIFrameID = 'hiddenDownloader',
@@ -127,14 +124,15 @@
 
             },
             deleteFile(id) {
-                window.axios.delete('/projects/9/files/' + id)
+                window.axios.delete('/projects/' + this.project.id
+                    + '/files/' + id)
                     .then(response => {
                             this.loadFiles(response.data)
                         }
                     )
             },
             loadFiles(data) {
-                console.log(data);
+
                 this.project.files = data.map((file) => {
                     let icon = 'mdi-file-image-outline';
                     if (file.path.indexOf('.pdf') + 1) {
@@ -143,9 +141,9 @@
                     if (file.path.indexOf('.doc') + 1) {
                         icon = 'mdi-file-word-outline '
                     }
-                    console.log(file.path,file.path.indexOf('.jpg'));
-                    if (file.path.indexOf('.jpg') + 1 ||file.path.indexOf('.jpeg') + 1 || file.path.indexOf('.png') + 1) {
-                         icon = 'image';
+                    console.log(file.path, file.path.indexOf('.jpg'));
+                    if (file.path.indexOf('.jpg') + 1 || file.path.indexOf('.jpeg') + 1 || file.path.indexOf('.png') + 1) {
+                        icon = 'image';
                     }
 
 
@@ -160,7 +158,8 @@
                 this.files.forEach(file => {
                     formdata.append('files[]', file)
                 });
-                window.axios.post('/projects/9/files', formdata, {header: {}}).then(response => {
+                window.axios.post('/projects/' + this.project.id
+                    + '/files', formdata, {header: {}}).then(response => {
                     this.loadFiles(response.data)
 
                 })

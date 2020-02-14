@@ -72,12 +72,12 @@ class Project extends Model
 
     public function status()
     {
-        $this->hasOne(ProjectStatus::class);
+        return $this->belongsTo(ProjectStatus::class, 'status_id');
     }
 
     public function payments()
     {
-        $this->belongsTo(Payment::class);
+        return $this->belongsTo(Payment::class);
     }
 
     public function files()

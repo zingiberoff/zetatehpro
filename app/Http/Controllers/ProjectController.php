@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Project;
 use App\ProjectFile;
+use App\ProjectStatus;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -23,35 +25,18 @@ class ProjectController extends Controller
      *
      * @return Response
      */
-    public function deleteFile(Project $project, ProjectFile $projectFile, Request $request)
+
+    public function updateStatus(Project $project, ProjectStatus $status = null)
     {
 
-        $project->files()->detach($projectFile->id);
-        $projectFile->refresh();
-        if (!count($projectFile->projects)) {
-            $projectFile->delete();
-        }
-        return $project->files;
-    }
-
-    public function saveFile(Project $project, Request $request)
-    {
-
-        $filesCollection = [];
-        if ($request->hasFile('files')) {
-            $uploadFiles = $request->allFiles()['files'];
-            /** @var \Illuminate\Http\UploadedFile $uploadFile */
-
-            foreach ($uploadFiles as $uploadFile) {
-                $file = ProjectFile::store($uploadFile);
-
-                $filesCollection[] = $file->id;
+        if ($status) {
+            if ($project->status->permissibleChangeStatuses()->contains($status)) {
+                $project->status()->associate($status);
+                $project->save();
             }
-            $project->files()->syncWithoutDetaching($filesCollection);
-
         }
+        return $project->status->permissibleChangeStatuses();
 
-        return $project->files;
     }
 
     public function index()
@@ -76,13 +61,15 @@ class ProjectController extends Controller
      *
      * @return Response
      */
-    public function saveProducts(Project $project, Request $request)
+    public
+    function saveProducts(Project $project, Request $request)
     {
         $project->products()->sync($request->all());
         return [$request->all(), $project];
     }
 
-    public function create(Request $request)
+    public
+    function create(Request $request)
     {
         //
 
@@ -111,7 +98,8 @@ class ProjectController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public
+    function store(Request $request)
     {
 
         try {
@@ -138,7 +126,8 @@ class ProjectController extends Controller
 
     }
 
-    private function saveProject(Project $project, Request $request)
+    private
+    function saveProject(Project $project, Request $request)
     {
         $customer = Customer::updateOrCreate(['inn' => $request->input('customer')['inn']], $request->input('customer'));
         $project->customer()->associate($customer);
@@ -174,6 +163,8 @@ class ProjectController extends Controller
         if (!$trust) return abort(403);
         $project->customer;
         $project->files;
+
+        $project->actions = $project->status->permissibleChangeStatuses();
         if ($request->ajax()) {
             return $project;
         }
@@ -219,4 +210,38 @@ class ProjectController extends Controller
     {
         //
     }
+
+    public
+    function deleteFile(Project $project, ProjectFile $projectFile, Request $request)
+    {
+
+        $project->files()->detach($projectFile->id);
+        $projectFile->refresh();
+        if (!count($projectFile->projects)) {
+            $projectFile->delete();
+        }
+        return $project->files;
+    }
+
+    public
+    function saveFile(Project $project, Request $request)
+    {
+
+        $filesCollection = [];
+        if ($request->hasFile('files')) {
+            $uploadFiles = $request->allFiles()['files'];
+            /** @var \Illuminate\Http\UploadedFile $uploadFile */
+
+            foreach ($uploadFiles as $uploadFile) {
+                $file = ProjectFile::store($uploadFile);
+
+                $filesCollection[] = $file->id;
+            }
+            $project->files()->syncWithoutDetaching($filesCollection);
+
+        }
+
+        return $project->files;
+    }
+
 }

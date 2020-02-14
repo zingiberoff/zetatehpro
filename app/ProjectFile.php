@@ -70,6 +70,7 @@ class ProjectFile extends Model
     {
 
         return \Storage::url($this->path);
+
     }
 
     public function projects()
