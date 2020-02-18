@@ -45,7 +45,7 @@ class ProjectController extends Controller
 
 
         if (Auth::user()->hasRole('moderator')) {
-            $data['projects'] = Project::all()->forPage(1, 20);
+            $data['projects'] = Project::all()->get();
             $data['moderate'] = true;
         } else {
             $data['projects'] = Auth::user()->projects()->get();
