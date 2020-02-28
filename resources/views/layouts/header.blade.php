@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="navbar navbar-expand-md navbar-light">   
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <div class="logo"><img src="/storage/ztp.svg" height="50" alt="ZetaTechPro"></div>
@@ -19,13 +19,20 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Войти') }}</a>
                     </li>
+                    <!-- Modal -->
+                    <!-- End modal -->
+
                     @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                         </li>
+                        <!-- Modal -->
+                       
+                        <!-- End modal -->
                     @endif
                 @else
                     <li class="nav-item dropdown">
@@ -109,7 +116,7 @@
                 @endif
 
                 <a href="/storage/ztp_cat.pdf" target="_blank" class="btn"><img src="/storage/download.svg" alt="">Скачать
-                    каталог</a>
+                    каталог<br> Проектные решения</a>
             </div>
             <div class="dekor1"><img src="/storage/main_logo.png" alt=""></div>
             <div class="dekor2"></div>

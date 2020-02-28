@@ -42,13 +42,21 @@
                     </form>
                     @endrole
                     @role('user')
-                    <b>Награда за включение: </b>{{ $product->cost_include}}
-                    <b>Награда за реализацию: </b>{{ $product->cost_realise}}
+                     <div class="alert alert-dark" role="alert">
+                      <h6>Награда за включение:  {{ $product->cost_include}}</h6>
+                      <h6>Награда за реализацию: {{ $product->cost_realise}}</h6>
+                     </div>
+                     
+                   
                     @endrole
                     <div class="props">
                         @foreach ($product->properties as $property)
-                            <b>{{$property->name}} </b>:
-                            {{$property->value }}<br>
+                            @if($property->value == 'true' || $property->value == 'false' || $property->name == 'Размер шестигранника (наруж. диаметр гайки)' || $property->name == 'Цвет' || 
+                                $property->name == 'Размер гаечного ключа' || $property->name == 'Номин. размер резьбы метрической M/PG' || $property->name == 'Номин. размер резьбы в дюймах NPT/резьбы газовой трубы' || $property->name == 'Шаг резьбы')  
+                            @else                
+                              <b>{{$property->name}} </b>:
+                              {{$property->value }}<br>
+                            @endif
                         @endforeach
                     </div>
                 </div>

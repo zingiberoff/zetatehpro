@@ -14,6 +14,14 @@ class CatalogController extends Controller
     {
         $products = Product::with('properties')->paginate(24);
 
+        //$product_list = Product::where('price', 0)->get();
+
+        //echo "<pre>";
+        //foreach($product_list as $key => $value){
+        //    echo 'Артикль:' . $value->article . ' ' .'Имя:' . $value->name . ' ' . 'Цена:' . $value->price . '<br>';
+        //}
+        //echo "</pre>";
+
         return view('catalog.index', ['products' => $products]);
     }   //
 

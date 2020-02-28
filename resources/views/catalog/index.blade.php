@@ -18,7 +18,7 @@
                                         type="text"
                                         name="q"
                                         class="form-control"
-                                        placeholder="Search..."
+                                        placeholder='Введите артикул товара из каталога "Проектные решения"'
                                         value="{{ request('q') }}"
                                 />
 
@@ -28,12 +28,14 @@
 
                         @include('catalog.list')
 
+                       
 
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
+        
     </div>
     @if(method_exists($products,'links'))
         {{ $products->links() }}
