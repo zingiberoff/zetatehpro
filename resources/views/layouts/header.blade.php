@@ -3,6 +3,14 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             <div class="logo"><img src="/storage/ztp.svg" height="50" alt="ZetaTechPro"></div>
         </a>
+        @guest
+        @if(!Request::route()->named('brand'))
+           <div style="margin-left:-600px;padding:5px;border: 1px solid black;"><a href="https://zetatechpro.ru/brand" style="color:black"><img src="/storage/medal.svg" alt="">О проекте</a></div>
+               
+        @endif
+        
+         
+        @endguest 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -19,20 +27,18 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
+                    
 
-                    <li class="nav-item">
+                   <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Войти') }}</a>
-                    </li>
-                    <!-- Modal -->
-                    <!-- End modal -->
+                    </li>-->
+                  
 
                     @if (Route::has('register'))
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
-                        </li>
-                        <!-- Modal -->
+                        </li>-->
                        
-                        <!-- End modal -->
                     @endif
                 @else
                     <li class="nav-item dropdown">
@@ -45,7 +51,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                <!--{{ __('Logout') }}-->Выйти
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -80,14 +86,14 @@
                 <br>
                 <a href="/storage/price.xlsx" class="btn"><img src="/storage/price.svg" alt="">Прайс</a>
                 @if(Request::route()->page=='brand')
-                    <div class="btn active"><img src="/storage/medal.svg" alt="">О бренде</div>
+                    <div class="btn active"><img src="/storage/medal.svg" alt="">О проекте</div>
                 @else
                     <a href="{{route('info',['page'=>'brand'])}}" class="btn">
-                        <img src="/storage/medal.svg" alt="">О бренде
+                        <img src="/storage/medal.svg" alt="">О проекте
                     </a>
                 @endif
 
-                @if(Request::route()->page=='contacts')
+                @if(Request::route()->page=='contacts') 
                     <div class="btn active"><img src="/storage/bank.svg" alt="">Контакты</div>
                 @else
                     <a href="{{route('info',['page'=>'contacts'])}}" class="btn">

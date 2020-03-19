@@ -13,6 +13,7 @@
                             <tr>
                                 <td>Логин</td>
                                 <td>e-mail</td>
+                                <td>Телефон</td>
                                 <td>Дата регистрации</td>
                                 <td></td>
 
@@ -23,6 +24,7 @@
                                 <tr>
                                     <td> {{$user->name}}</td>
                                     <td> {{$user->email}}</td>
+                                    <td> {{$user->phone}}</td>
                                     <td> {{$user->created_at}}</td>
                                     <td>
                                         <a href="{{route('confirm_user',$user->id)}}">Подтвердить</a>

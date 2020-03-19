@@ -9,7 +9,7 @@ class HomearController extends Controller
     //
      public function ajlogin()
     {
-        return view('ajlogin');
+        //return view('ajlogin');
     }
 
     public function ajloginPost()

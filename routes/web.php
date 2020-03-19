@@ -32,11 +32,12 @@ Route::get('/confirm_user/{id?}', 'UserController@confirm')->name('confirm_user'
 
 
 Route::get('/category/getTree', 'CatalogController@getTree')->name('getTree');
-Route::get('/catalog', 'CatalogController@index')->name('catalog');
-Route::get('/catalog/section/{section}', 'CatalogController@section')->name('sectionIndex');
+Route::get('/catalog', 'CatalogController@index')->name('catalog')->middleware('auth');
+Route::get('/catalog/section/{section}', 'CatalogController@section')->name('sectionIndex')->middleware('auth');
 Route::post('/product/{product}/changeCost', 'ProductController@changeCost')->middleware('role:moderator')->name('changeProductCost');
 Route::get('/search', 'CatalogController@search');
 
 
 Route::get('/politic', 'PoliticController@index')->name('politic');
+Route::get('/brand', 'BrandController@index')->name('brand');
 
