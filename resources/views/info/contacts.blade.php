@@ -7,7 +7,7 @@
         <div class="h1">Филатов Вячеслав</div>
         <div class="h2"><a href="tel:89537628786">
                 <v-icon>mdi-phone</v-icon>
-                +7(953)762-87-86</a></div>
+                +7(383)217-40-94</a></div>
         <div class="h2"><a href="mailto:29@7899.ru">
                 <v-icon>mdi-mail</v-icon>
                 manager@zetatechpro.ru</a></div>
