@@ -11,7 +11,7 @@ class RaecClient extends GuzzleClient
 
     private function __construct(array $config = [])
     {
-        $config['base_uri'] = 'https://catalog.raec.su/api/';
+        $config['base_uri'] = 'http://catalog.raec.su/api/';
         $config['headers']['API-KEY'] = 'ae1c3f7268761a94717ff29f30017c00';
         $config['headers']['format'] = 'json';
         parent::__construct($config);
