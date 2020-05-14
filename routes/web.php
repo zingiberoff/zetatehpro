@@ -37,7 +37,12 @@ Route::get('/catalog/section/{section}', 'CatalogController@section')->name('sec
 Route::post('/product/{product}/changeCost', 'ProductController@changeCost')->middleware('role:moderator')->name('changeProductCost');
 Route::get('/search', 'CatalogController@search');
 
+<<<<<<< HEAD
 
 Route::get('/politic', 'PoliticController@index')->name('politic');
 Route::get('/brand', 'BrandController@index')->name('brand');
 
+=======
+Route::get('/catalog/selection', 'SelectionController@index')->name('selection');
+Route::post('/catalog/selection/search', 'SelectionController@search');
+>>>>>>> b3d3484f491f6dce4c293d4fc368ade17776fb35
