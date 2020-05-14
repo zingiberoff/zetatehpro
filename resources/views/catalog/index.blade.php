@@ -12,6 +12,14 @@
                 <div class="card">
                     <div class="card-header h1">{{$section->name ?? 'Каталог продукции'}}</div>
                     <div class="p-4">
+                        @isset($section)
+                            @if($section->id === 55)
+                                <a href="/catalog/selection" class="btn btn-primary text-white">Инструмент подбора муфт</a>
+                            @endif
+                        @endisset
+                    </div>
+
+                    <div class="p-4">
                         <form action="{{ url('search') }}" method="get">
                             <div class="form-group">
                                 <input

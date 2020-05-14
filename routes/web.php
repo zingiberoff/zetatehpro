@@ -36,3 +36,6 @@ Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/catalog/section/{section}', 'CatalogController@section')->name('sectionIndex');
 Route::post('/product/{product}/changeCost', 'ProductController@changeCost')->middleware('role:moderator')->name('changeProductCost');
 Route::get('/search', 'CatalogController@search');
+
+Route::get('/catalog/selection', 'SelectionController@index')->name('selection');
+Route::post('/catalog/selection/search', 'SelectionController@search');
