@@ -16,6 +16,7 @@ class SelectionController extends Controller
     {
         $params = $request->params;
         $sections = range(55, 89);
+        // $sections = range(119, 153);
 
         $res = Product::whereHas('sections', function ($query) use ($sections) {
             $query->whereIn('id', $sections);

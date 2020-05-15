@@ -84,7 +84,7 @@
                 </a>
                 @endpermission
                 <br>
-                <a href="/storage/price.xlsx" class="btn"><img src="/storage/price.svg" alt="">Прайс</a>
+                <!-- <a href="/storage/price.xlsx" class="btn"><img src="/storage/price.svg" alt="">Прайс</a> -->
                 @if(Request::route()->page=='brand')
                     <div class="btn active"><img src="/storage/medal.svg" alt="">О проекте</div>
                 @else
@@ -123,6 +123,8 @@
 
                 <a href="/storage/ztp_cat.pdf" target="_blank" class="btn"><img src="/storage/download.svg" alt="">Скачать
                     каталог<br> Проектные решения</a>
+                <a href="/storage/zetamuft.pdf" class="btn"><img src="/storage/price.svg" alt="">Скачать каталог Муфт</a>
+
             </div>
             <div class="dekor1"><img src="/storage/main_logo.png" alt=""></div>
             <div class="dekor2"></div>
