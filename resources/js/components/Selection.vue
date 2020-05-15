@@ -220,27 +220,30 @@ export default {
   },
 
   watch: {
-    page: function() {
-      this.search();
+    page: function(val) {
+      this.search(val);
     }
   },
 
   methods: {
     submit() {
-      this.search();
+      this.search(1);
     },
 
-    search() {
+    search(page) {
       axios
-        .post("/catalog/selection/search?page=" + this.page, {
+        .post("/catalog/selection/search?page=" + page, {
           params: this.selectionArray
         })
         .then(res => {
-          console.log(res.data);
+          // console.log(res.data);
+          // console.log("TEST 1: ", this.products);
+
           this.page = res.data.current_page;
           this.itemsPerPage = res.data.per_page;
           this.pageCount = Math.ceil(res.data.total / res.data.per_page);
           this.products = res.data.data;
+          // console.log("TEST 2: ", this.products);
           this.getProps();
         });
     },
@@ -255,13 +258,13 @@ export default {
     getProps() {
       this.products.forEach(product => {
         product.properties.forEach(prop => {
-          if (prop.id === 75) {
+          if (prop.id === 76) {
             product.sechenie_diapozon = prop.pivot.value;
           }
-          if (prop.id === 77) {
+          if (prop.id === 78) {
             product.napryajenie = prop.pivot.value;
           }
-          if (prop.id === 80) {
+          if (prop.id === 81) {
             product.sechenie = prop.pivot.value;
           }
         });
