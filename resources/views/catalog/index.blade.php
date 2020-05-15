@@ -23,12 +23,15 @@
                 <div class="p-4">
                     <form action="{{ url('search') }}" method="get">
                         <div class="form-group">
+                            @isset($section)
+
                             {{-- @if($section->id >= 119 && $section->id <= 153)  --}}
-                            @if($section->id >= 55 && $section->id <= 89) 
-                            <input type="text" name="q" class="form-control" placeholder='Введите артикул товара из каталога "Муфты кабельные"' value="{{ request('q') }}" />
+                            @if($section->id >= 55 && $section->id
+                            <= 89) <input type="text" name="q" class="form-control" placeholder='Введите артикул товара из каталога "Муфты кабельные"' value="{{ request('q') }}" />
                             @else
                             <input type="text" name="q" class="form-control" placeholder='Введите артикул товара из каталога "Проектные решения"' value="{{ request('q') }}" />
                             @endif
+                            @endisset
 
                         </div>
                     </form>
