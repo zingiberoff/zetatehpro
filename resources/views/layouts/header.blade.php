@@ -123,7 +123,7 @@
 
                 <a href="/storage/ztp_cat.pdf" target="_blank" class="btn"><img src="/storage/download.svg" alt="">Скачать
                     каталог<br> Проектные решения</a>
-                <a href="/storage/zetamuft.pdf" class="btn"><img src="/storage/price.svg" alt="">Скачать каталог Муфт</a>
+                <a href="/storage/zetamuft.pdf" class="btn"><img src="/storage/download.svg" alt="">Скачать каталог Муфт</a>
 
             </div>
             <div class="dekor1"><img src="/storage/main_logo.png" alt=""></div>
