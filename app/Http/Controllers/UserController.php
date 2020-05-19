@@ -26,6 +26,16 @@ class UserController extends Controller
         return view('user.unconfirmed', ['users' => $users]);
     }
 
+    public function confirmed()
+    {
+        \Auth::user()->hasPermission('confirm-users');
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'user');
+        })->get();
+
+        return view('user.confirmed', ['users' => $users]);
+    }
+
     public function confirm($id)
     {
         User::find($id)->attachRole('user');

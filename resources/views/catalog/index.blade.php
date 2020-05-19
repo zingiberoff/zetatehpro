@@ -33,6 +33,10 @@
                             @endif
                             @endisset
 
+                            @empty($section)
+                            <input type="text" name="q" class="form-control" placeholder='Введите артикул товара' value="{{ request('q') }}" />
+                            @endempty
+
                         </div>
                     </form>
 

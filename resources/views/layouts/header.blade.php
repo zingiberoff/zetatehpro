@@ -82,6 +82,12 @@
                     <v-icon>mdi-account-cog</v-icon>
                     Новые <br> пользователи
                 </a>
+
+                <a href="{{route('confirmed_users')}}"
+                   class="btn inverse">
+                    <v-icon>mdi-account-cog</v-icon>
+                    Пользователи
+                </a>
                 @endpermission
                 <br>
                 <!-- <a href="/storage/price.xlsx" class="btn"><img src="/storage/price.svg" alt="">Прайс</a> -->

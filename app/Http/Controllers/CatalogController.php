@@ -38,7 +38,7 @@ class CatalogController extends Controller
         if ($request->ajax()) {
             return $products;
         }
-        return view('catalog.index', ['products' => $products]); 
+        return view('catalog.index', ['products' => $products]);
     }
 
 }
