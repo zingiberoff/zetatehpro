@@ -51,6 +51,8 @@
                     @endrole
                     <div class="props">
                         <br>
+                        {{-- @if(($product->sections[0]->id >= 28 && $product->sections[0]->id <= 34) || ($product->sections[0]->id >= 55 && $product->sections[0]->id <= 70)) --}}
+
                         @if(($product->sections[0]->id >= 1 && $product->sections[0]->id <= 7) || ($product->sections[0]->id >= 26 && $product->sections[0]->id <= 41))
                             @foreach ($product->properties as $property)
                                 @if($property->name == 'Номин. размер резьбы метрической M/PG' || $property->name == 'Номин. размер резьбы в дюймах NPT/резьбы газовой трубы' || $property->name == 'Для взрывоопасной зоны по газу (Ex)' || $property->name == 'Степень защиты (IP)' || $property->name == 'Подходит для кабеля диаметром:' || $property->name == 'Взрывобезопасное исполнение' || $property->name == 'Шаг резьбы' || $property->name == 'Материал' || $property->name == 'Тип резьбы' || $property->name == 'Рабочая температура' || $property->name == 'Вид/марка материала' || $property->name == 'Длина резьбы')  
