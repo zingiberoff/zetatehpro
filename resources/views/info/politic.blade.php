@@ -178,7 +178,7 @@
             </li>
             <li>9.4. Действующая Политика конфиденциальности размещена на странице сайта <a href="https://zetatechpro.ru">zetatechpro.ru</a>
                 по адресу
-                <a href="https://zetatechpro.ru/politic">https://zetatechpro.ru/info/politic</a>
+                <a href="https://zetatechpro.ru/info/politic">https://zetatechpro.ru/info/politic</a>
         </ul>
     </div>
 @endsection

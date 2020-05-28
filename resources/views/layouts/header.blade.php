@@ -5,7 +5,7 @@
         </a>
         @guest
         @if(!Request::route()->named('brand'))
-           <div style="margin-left:-600px;padding:5px;border: 1px solid black;"><a href="https://zetatechpro.ru/brand" style="color:black"><img src="/storage/medal.svg" alt="">О проекте</a></div>
+           <div style="margin-left:-600px;padding:5px;border: 1px solid black;"><a href="/brand" style="color:black"><img src="/storage/medal.svg" alt="">О проекте</a></div>
                
         @endif
         

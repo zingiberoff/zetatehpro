@@ -18,6 +18,17 @@ Auth::routes();
 Route::get('/info/{page}', function ($page) {
     return view('info.' . $page);
 })->name('info')->middleware('auth');
+
+
+Route::get('/brand', function () {
+    return view('info.brand');
+})->name('brand');
+
+Route::get('/politic', function () {
+    return view('info.politic');
+})->name('politic');
+
+
 Route::get('api/token/get', 'Auth\ApiTokenController@getToken')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/unconfirmed', 'GuestController@unconfirmed')->name('unconfirmed');

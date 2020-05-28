@@ -49,6 +49,6 @@
     </v-app>
 </div>
 <script src="//code-ya.jivosite.com/widget/WKvvlDPiFN" async></script>  
-  <a href="https://zetatechpro.ru/politic"><div style="float:right;margin-bottom:30px;margin-right:30px;">Политика конфиденциальности</div></a>
+  <a href="/politic"><div style="float:right;margin-bottom:30px;margin-right:30px;">Политика конфиденциальности</div></a>
 </body>
 </html> 
