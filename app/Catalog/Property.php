@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     //
+    protected $fillable = ['*'];
+
     public function getValueAttribute()
     {
         if (!$this->relations) return null;

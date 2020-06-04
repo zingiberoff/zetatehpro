@@ -61,7 +61,7 @@
                                 @endif
                             @endforeach
 
-                        {{-- @elseif ($product->sections[0]->id >= 9 && $product->sections[0]->id <= 25) --}}
+                        {{-- @elseif ($product->sections[0]->id >= 36 && $product->sections[0]->id <= 54) --}}
                         @elseif ($product->sections[0]->id >= 9 && $product->sections[0]->id <= 25)
                             {{-- Гайки --}}
                             @foreach ($product->properties as $property)
@@ -71,7 +71,7 @@
                                 @endif
                             @endforeach
 
-                        {{-- @elseif ($product->sections[0]->id >= 9 && $product->sections[0]->id <= 25) --}}
+                        {{-- @elseif ($product->sections[0]->id >= 71 && $product->sections[0]->id <= 83) --}}
                         @elseif ($product->sections[0]->id >= 42 && $product->sections[0]->id <= 54)
                             {{-- Металлорукав --}}
                             @foreach ($product->properties as $property)
@@ -81,7 +81,7 @@
                                 @endif
                             @endforeach
 
-                        {{-- @elseif ($product->sections[0]->id >= 9 && $product->sections[0]->id <= 25) --}}
+                        {{-- @elseif ($product->sections[0]->id >= 35 && $product->sections[0]->id <= 35) --}}
                         @elseif ($product->sections[0]->id >= 8 && $product->sections[0]->id <= 8)
                             {{-- Коробки --}}
                             @foreach ($product->properties as $property)

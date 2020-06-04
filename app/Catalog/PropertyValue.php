@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyValue extends Model
 {
-    //
+    protected $fillable = ['value', 'property_id'];
+
     public $timestamps = false;
 
     public function property()
