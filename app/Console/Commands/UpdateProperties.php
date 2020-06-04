@@ -72,6 +72,7 @@ class UpdateProperties extends Command
                 $feature = Property::firstOrCreate(
                     ['name' => $name]
                 );
+
                 $value = PropertyValue::firstOrCreate(
                     ['value' => $property, 'property_id' => $feature->id]
                 );

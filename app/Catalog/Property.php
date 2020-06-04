@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     //
-    protected $fillable = ['*'];
+    protected $fillable = ['name'];
 
     public function getValueAttribute()
     {
