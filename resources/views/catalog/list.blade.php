@@ -91,10 +91,9 @@
                                 @endif
                             @endforeach
                         @else
+                            {{-- Муфты --}}
                             @foreach ($product->properties as $property)
-                                @if($property->value == 'true' || $property->value == 'false' || $property->name == 'Размер шестигранника (наруж. диаметр гайки)' || $property->name == 'Цвет' || 
-                                    $property->name == 'Размер гаечного ключа' || $property->name == 'Номин. размер резьбы метрической M/PG' || $property->name == 'Номин. размер резьбы в дюймах NPT/резьбы газовой трубы' || $property->name == 'Шаг резьбы')  
-                                @else                
+                                @if($property->name == 'Тип кабеля' || $property->name == 'Климатическое исполнение' || $property->name == 'Изготавливается по' || $property->name == 'Сертификат' || $property->name == 'Сечение кабеля, мм2' || $property->name == 'Тип муфты' || $property->name == 'Сечение кабеля (Число)' || $property->name == 'Тип установки' || $property->name == 'Рабочее напряжение' || $property->name == 'Количество жил' || $property->name == 'Наличие и тип контактных элементов' || $property->name == 'Комплект заземления' || $property->name == 'Наличие защитного слоя в кабеле' || $property->name == 'Тип изоляции' || $property->name == 'Длина разделки' || $property->name == 'Бренд')  
                                     <b>{{$property->name}} </b>:
                                     {{$property->value }}<br>
                                 @endif
