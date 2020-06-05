@@ -105,12 +105,25 @@
                         {{-- @elseif ($product->sections[0]->id >= 35 && $product->sections[0]->id <= 35) --}}
                         @elseif ($product->sections[0]->id >= 8 && $product->sections[0]->id <= 8)
                             {{-- Коробки --}}
+                            @php
+                                $prop = null;
+                                foreach($product->properties as $property) {
+                                    if($property->name == 'Рабочая температура') {
+                                        $prop = $property->value;
+                                    }
+                                }
+                            @endphp
+
                             @foreach ($product->properties as $property)
-                                @if($property->name == 'Для взрывоопасной зоны по пыли (Ex)' || $property->name == 'Для взрывоопасной зоны по газу (Ex)' || $property->name == 'Степень защиты (IP)' || $property->name == 'Взрывобезопасное исполнение' || $property->name == 'Материал' || $property->name == 'Защитное покрытие поверхности' || $property->name == 'Цвет' || $property->name == 'Макс. поперечное сечение проводника' || $property->name == 'Крепление крышки' || $property->name == 'Количество вводов' || $property->name == 'Рабочая температура' || $property->name == 'Тип ввода' || $property->name == 'Длина' || $property->name == 'Количество соединительных зажимов/клемм' || $property->name == 'Глубина' || $property->name == 'Ширина' || $property->name == 'Способ монтажа')  
+                                @if($property->name == 'Для взрывоопасной зоны по пыли (Ex)' || $property->name == 'Для взрывоопасной зоны по газу (Ex)' || $property->name == 'Степень защиты (IP)' || $property->name == 'Взрывобезопасное исполнение' || $property->name == 'Материал' || $property->name == 'Защитное покрытие поверхности' || $property->name == 'Цвет' || $property->name == 'Макс. поперечное сечение проводника' || $property->name == 'Крепление крышки' || $property->name == 'Количество вводов' || $property->name == 'Тип ввода' || $property->name == 'Длина' || $property->name == 'Количество соединительных зажимов/клемм' || $property->name == 'Глубина' || $property->name == 'Ширина' || $property->name == 'Способ монтажа')  
                                     <b>{{$property->name}} </b>:
                                     {{$property->value }}<br>
                                 @endif
                             @endforeach
+
+                            <b>Рабочая температура </b>:
+                            {{$prop}}<br>
+
                         @else
                             {{-- Муфты --}}
                             @foreach ($product->properties as $property)
