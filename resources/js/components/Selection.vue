@@ -26,13 +26,13 @@
     </div>
     <hr />
     <v-data-table
-      dense
       :headers="headers"
       :items="products"
       :items-per-page="itemsPerPage"
       hide-default-footer
-      item-key="name"
+      item-key="id"
       class="elevation-1"
+      dense
     ></v-data-table>
     <v-pagination v-if="products.length" v-model="page" :length="pageCount" :total-visible="10"></v-pagination>
   </v-container>
@@ -45,7 +45,7 @@ export default {
     loading: true,
     page: null,
     pageCount: null,
-    itemsPerPage: null,
+    itemsPerPage: 20,
     selectItems: [],
     products: [],
     headers: [
