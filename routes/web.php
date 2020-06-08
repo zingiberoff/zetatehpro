@@ -51,3 +51,4 @@ Route::get('/search', 'CatalogController@search');
 
 Route::get('/catalog/selection', 'SelectionController@index')->name('selection');
 Route::post('/catalog/selection/search', 'SelectionController@search');
+Route::get('/catalog/selection/properties', 'SelectionController@properties');
